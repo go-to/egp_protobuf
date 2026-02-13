@@ -167,6 +167,34 @@ message MergeUserStampResponse {
   int32 stamp_num = 1;
 }
 
+// ユーザー関連メッセージ
+message User {
+  string user_id = 1;           // Firebase UID
+  string email = 2;             // メールアドレス（任意）
+  string display_name = 3;      // 表示名
+  bool is_anonymous = 4;        // 匿名ユーザーフラグ
+  string provider_id = 5;       // 認証プロバイダー（anonymous, google.com, password等）
+}
+
+message SyncUserRequest {
+  // Firebase ID Tokenから取得した情報がInterceptorでContextに設定されるため
+  // リクエストボディは空でも可。display_nameのみクライアントから送信可能
+  string display_name = 1;      // 表示名（任意、クライアントから設定可能）
+}
+
+message SyncUserResponse {
+  User user = 1;                // 同期されたユーザー情報
+  bool is_new_user = 2;         // 新規作成されたかどうか
+}
+
+message GetUserRequest {
+  // 空リクエスト - ユーザーIDはContextから取得
+}
+
+message GetUserResponse {
+  User user = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -178,6 +206,10 @@ service EgpService {
   rpc AddStamp (StampRequest) returns (StampResponse);
   // スタンプ削除
   rpc DeleteStamp (StampRequest) returns (StampResponse);
-  // ユーザーログイン
+  // ユーザースタンプマージ（匿名→永続化ユーザー移行時）
   rpc MergeUserStamp (MergeUserStampRequest) returns (MergeUserStampResponse);
+  // ユーザー同期（Firebase認証後にバックエンドDBと同期）
+  rpc SyncUser (SyncUserRequest) returns (SyncUserResponse);
+  // ユーザー情報取得
+  rpc GetUser (GetUserRequest) returns (GetUserResponse);
 }
