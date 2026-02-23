@@ -1791,6 +1791,174 @@ func (x *GetUserResponse) GetUser() *User {
 	return nil
 }
 
+type UpdateUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	PrevUserId    string                 `protobuf:"bytes,1,opt,name=prev_user_id,json=prevUserId,proto3" json:"prev_user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserRequest) Reset() {
+	*x = UpdateUserRequest{}
+	mi := &file_egp_proto_msgTypes[24]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserRequest) ProtoMessage() {}
+
+func (x *UpdateUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[24]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserRequest.ProtoReflect.Descriptor instead.
+func (*UpdateUserRequest) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{24}
+}
+
+func (x *UpdateUserRequest) GetPrevUserId() string {
+	if x != nil {
+		return x.PrevUserId
+	}
+	return ""
+}
+
+type UpdateUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateUserResponse) Reset() {
+	*x = UpdateUserResponse{}
+	mi := &file_egp_proto_msgTypes[25]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateUserResponse) ProtoMessage() {}
+
+func (x *UpdateUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[25]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateUserResponse.ProtoReflect.Descriptor instead.
+func (*UpdateUserResponse) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{25}
+}
+
+func (x *UpdateUserResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+type DeleteUserRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserRequest) Reset() {
+	*x = DeleteUserRequest{}
+	mi := &file_egp_proto_msgTypes[26]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserRequest) ProtoMessage() {}
+
+func (x *DeleteUserRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[26]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserRequest.ProtoReflect.Descriptor instead.
+func (*DeleteUserRequest) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{26}
+}
+
+type DeleteUserResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *DeleteUserResponse) Reset() {
+	*x = DeleteUserResponse{}
+	mi := &file_egp_proto_msgTypes[27]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *DeleteUserResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*DeleteUserResponse) ProtoMessage() {}
+
+func (x *DeleteUserResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[27]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use DeleteUserResponse.ProtoReflect.Descriptor instead.
+func (*DeleteUserResponse) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{27}
+}
+
+func (x *DeleteUserResponse) GetUserId() string {
+	if x != nil {
+		return x.UserId
+	}
+	return ""
+}
+
 var File_egp_proto protoreflect.FileDescriptor
 
 const file_egp_proto_rawDesc = "" +
@@ -1929,7 +2097,15 @@ const file_egp_proto_rawDesc = "" +
 	"\vis_new_user\x18\x02 \x01(\bR\tisNewUser\"\x10\n" +
 	"\x0eGetUserRequest\"0\n" +
 	"\x0fGetUserResponse\x12\x1d\n" +
-	"\x04user\x18\x01 \x01(\v2\t.egp.UserR\x04user*\xba\x01\n" +
+	"\x04user\x18\x01 \x01(\v2\t.egp.UserR\x04user\"5\n" +
+	"\x11UpdateUserRequest\x12 \n" +
+	"\fprev_user_id\x18\x01 \x01(\tR\n" +
+	"prevUserId\"3\n" +
+	"\x12UpdateUserResponse\x12\x1d\n" +
+	"\x04user\x18\x01 \x01(\v2\t.egp.UserR\x04user\"\x13\n" +
+	"\x11DeleteUserRequest\"-\n" +
+	"\x12DeleteUserResponse\x12\x17\n" +
+	"\auser_id\x18\x01 \x01(\tR\x06userId*\xba\x01\n" +
 	"\fCategoryType\x12\x16\n" +
 	"\x12CATEGORY_TYPE_NONE\x10\x00\x12\x19\n" +
 	"\x15CATEGORY_TYPE_EBISU_1\x10\x01\x12\x19\n" +
@@ -1946,7 +2122,7 @@ const file_egp_proto_rawDesc = "" +
 	"\x19SEARCH_TYPE_BEER_COCKTAIL\x10\x04*;\n" +
 	"\rSortOrderType\x12\x11\n" +
 	"\rSORT_ORDER_NO\x10\x00\x12\x17\n" +
-	"\x13SORT_ORDER_DISTANCE\x10\x012\xd4\x03\n" +
+	"\x13SORT_ORDER_DISTANCE\x10\x012\xd2\x04\n" +
 	"\n" +
 	"EgpService\x12@\n" +
 	"\rGetShopsTotal\x12\x16.egp.ShopsTotalRequest\x1a\x17.egp.ShopsTotalResponse\x121\n" +
@@ -1956,7 +2132,11 @@ const file_egp_proto_rawDesc = "" +
 	"\vDeleteStamp\x12\x11.egp.StampRequest\x1a\x12.egp.StampResponse\x12I\n" +
 	"\x0eMergeUserStamp\x12\x1a.egp.MergeUserStampRequest\x1a\x1b.egp.MergeUserStampResponse\x127\n" +
 	"\bSyncUser\x12\x14.egp.SyncUserRequest\x1a\x15.egp.SyncUserResponse\x124\n" +
-	"\aGetUser\x12\x13.egp.GetUserRequest\x1a\x14.egp.GetUserResponseB\"Z github.com/go-to/egp_protobuf/pbb\x06proto3"
+	"\aGetUser\x12\x13.egp.GetUserRequest\x1a\x14.egp.GetUserResponse\x12=\n" +
+	"\n" +
+	"UpdateUser\x12\x16.egp.UpdateUserRequest\x1a\x17.egp.UpdateUserResponse\x12=\n" +
+	"\n" +
+	"DeleteUser\x12\x16.egp.DeleteUserRequest\x1a\x17.egp.DeleteUserResponseB\"Z github.com/go-to/egp_protobuf/pbb\x06proto3"
 
 var (
 	file_egp_proto_rawDescOnce sync.Once
@@ -1971,7 +2151,7 @@ func file_egp_proto_rawDescGZIP() []byte {
 }
 
 var file_egp_proto_enumTypes = make([]protoimpl.EnumInfo, 3)
-var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 24)
+var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 28)
 var file_egp_proto_goTypes = []any{
 	(CategoryType)(0),              // 0: egp.CategoryType
 	(SearchType)(0),                // 1: egp.SearchType
@@ -2000,6 +2180,10 @@ var file_egp_proto_goTypes = []any{
 	(*SyncUserResponse)(nil),       // 24: egp.SyncUserResponse
 	(*GetUserRequest)(nil),         // 25: egp.GetUserRequest
 	(*GetUserResponse)(nil),        // 26: egp.GetUserResponse
+	(*UpdateUserRequest)(nil),      // 27: egp.UpdateUserRequest
+	(*UpdateUserResponse)(nil),     // 28: egp.UpdateUserResponse
+	(*DeleteUserRequest)(nil),      // 29: egp.DeleteUserRequest
+	(*DeleteUserResponse)(nil),     // 30: egp.DeleteUserResponse
 }
 var file_egp_proto_depIdxs = []int32{
 	3,  // 0: egp.Event.start_date:type_name -> egp.Date
@@ -2013,27 +2197,32 @@ var file_egp_proto_depIdxs = []int32{
 	9,  // 8: egp.ShopResponse.shop:type_name -> egp.Shop
 	22, // 9: egp.SyncUserResponse.user:type_name -> egp.User
 	22, // 10: egp.GetUserResponse.user:type_name -> egp.User
-	12, // 11: egp.EgpService.GetShopsTotal:input_type -> egp.ShopsTotalRequest
-	14, // 12: egp.EgpService.GetShops:input_type -> egp.ShopsRequest
-	16, // 13: egp.EgpService.GetShop:input_type -> egp.ShopRequest
-	18, // 14: egp.EgpService.AddStamp:input_type -> egp.StampRequest
-	18, // 15: egp.EgpService.DeleteStamp:input_type -> egp.StampRequest
-	20, // 16: egp.EgpService.MergeUserStamp:input_type -> egp.MergeUserStampRequest
-	23, // 17: egp.EgpService.SyncUser:input_type -> egp.SyncUserRequest
-	25, // 18: egp.EgpService.GetUser:input_type -> egp.GetUserRequest
-	13, // 19: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
-	15, // 20: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
-	17, // 21: egp.EgpService.GetShop:output_type -> egp.ShopResponse
-	19, // 22: egp.EgpService.AddStamp:output_type -> egp.StampResponse
-	19, // 23: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
-	21, // 24: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
-	24, // 25: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
-	26, // 26: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
-	19, // [19:27] is the sub-list for method output_type
-	11, // [11:19] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	22, // 11: egp.UpdateUserResponse.user:type_name -> egp.User
+	12, // 12: egp.EgpService.GetShopsTotal:input_type -> egp.ShopsTotalRequest
+	14, // 13: egp.EgpService.GetShops:input_type -> egp.ShopsRequest
+	16, // 14: egp.EgpService.GetShop:input_type -> egp.ShopRequest
+	18, // 15: egp.EgpService.AddStamp:input_type -> egp.StampRequest
+	18, // 16: egp.EgpService.DeleteStamp:input_type -> egp.StampRequest
+	20, // 17: egp.EgpService.MergeUserStamp:input_type -> egp.MergeUserStampRequest
+	23, // 18: egp.EgpService.SyncUser:input_type -> egp.SyncUserRequest
+	25, // 19: egp.EgpService.GetUser:input_type -> egp.GetUserRequest
+	27, // 20: egp.EgpService.UpdateUser:input_type -> egp.UpdateUserRequest
+	29, // 21: egp.EgpService.DeleteUser:input_type -> egp.DeleteUserRequest
+	13, // 22: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
+	15, // 23: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
+	17, // 24: egp.EgpService.GetShop:output_type -> egp.ShopResponse
+	19, // 25: egp.EgpService.AddStamp:output_type -> egp.StampResponse
+	19, // 26: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
+	21, // 27: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
+	24, // 28: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
+	26, // 29: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
+	28, // 30: egp.EgpService.UpdateUser:output_type -> egp.UpdateUserResponse
+	30, // 31: egp.EgpService.DeleteUser:output_type -> egp.DeleteUserResponse
+	22, // [22:32] is the sub-list for method output_type
+	12, // [12:22] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_egp_proto_init() }
@@ -2047,7 +2236,7 @@ func file_egp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_egp_proto_rawDesc), len(file_egp_proto_rawDesc)),
 			NumEnums:      3,
-			NumMessages:   24,
+			NumMessages:   28,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

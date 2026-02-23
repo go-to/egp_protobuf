@@ -27,6 +27,8 @@ const (
 	EgpService_MergeUserStamp_FullMethodName = "/egp.EgpService/MergeUserStamp"
 	EgpService_SyncUser_FullMethodName       = "/egp.EgpService/SyncUser"
 	EgpService_GetUser_FullMethodName        = "/egp.EgpService/GetUser"
+	EgpService_UpdateUser_FullMethodName     = "/egp.EgpService/UpdateUser"
+	EgpService_DeleteUser_FullMethodName     = "/egp.EgpService/DeleteUser"
 )
 
 // EgpServiceClient is the client API for EgpService service.
@@ -49,6 +51,10 @@ type EgpServiceClient interface {
 	SyncUser(ctx context.Context, in *SyncUserRequest, opts ...grpc.CallOption) (*SyncUserResponse, error)
 	// ユーザー情報取得
 	GetUser(ctx context.Context, in *GetUserRequest, opts ...grpc.CallOption) (*GetUserResponse, error)
+	// ユーザー情報更新
+	UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error)
+	// ユーザー情報削除
+	DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error)
 }
 
 type egpServiceClient struct {
@@ -139,6 +145,26 @@ func (c *egpServiceClient) GetUser(ctx context.Context, in *GetUserRequest, opts
 	return out, nil
 }
 
+func (c *egpServiceClient) UpdateUser(ctx context.Context, in *UpdateUserRequest, opts ...grpc.CallOption) (*UpdateUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateUserResponse)
+	err := c.cc.Invoke(ctx, EgpService_UpdateUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *egpServiceClient) DeleteUser(ctx context.Context, in *DeleteUserRequest, opts ...grpc.CallOption) (*DeleteUserResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(DeleteUserResponse)
+	err := c.cc.Invoke(ctx, EgpService_DeleteUser_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EgpServiceServer is the server API for EgpService service.
 // All implementations must embed UnimplementedEgpServiceServer
 // for forward compatibility.
@@ -159,6 +185,10 @@ type EgpServiceServer interface {
 	SyncUser(context.Context, *SyncUserRequest) (*SyncUserResponse, error)
 	// ユーザー情報取得
 	GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error)
+	// ユーザー情報更新
+	UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error)
+	// ユーザー情報削除
+	DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error)
 	mustEmbedUnimplementedEgpServiceServer()
 }
 
@@ -192,6 +222,12 @@ func (UnimplementedEgpServiceServer) SyncUser(context.Context, *SyncUserRequest)
 }
 func (UnimplementedEgpServiceServer) GetUser(context.Context, *GetUserRequest) (*GetUserResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUser not implemented")
+}
+func (UnimplementedEgpServiceServer) UpdateUser(context.Context, *UpdateUserRequest) (*UpdateUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+}
+func (UnimplementedEgpServiceServer) DeleteUser(context.Context, *DeleteUserRequest) (*DeleteUserResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
 func (UnimplementedEgpServiceServer) mustEmbedUnimplementedEgpServiceServer() {}
 func (UnimplementedEgpServiceServer) testEmbeddedByValue()                    {}
@@ -358,6 +394,42 @@ func _EgpService_GetUser_Handler(srv interface{}, ctx context.Context, dec func(
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EgpService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).UpdateUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_UpdateUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).UpdateUser(ctx, req.(*UpdateUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EgpService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(DeleteUserRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).DeleteUser(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_DeleteUser_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).DeleteUser(ctx, req.(*DeleteUserRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // EgpService_ServiceDesc is the grpc.ServiceDesc for EgpService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -396,6 +468,14 @@ var EgpService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetUser",
 			Handler:    _EgpService_GetUser_Handler,
+		},
+		{
+			MethodName: "UpdateUser",
+			Handler:    _EgpService_UpdateUser_Handler,
+		},
+		{
+			MethodName: "DeleteUser",
+			Handler:    _EgpService_DeleteUser_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
