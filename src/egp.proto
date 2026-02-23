@@ -195,6 +195,22 @@ message GetUserResponse {
   User user = 1;
 }
 
+message UpdateUserRequest {
+  string prev_user_id = 1;
+}
+
+message UpdateUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  // 空リクエスト - ユーザーIDはContextから取得
+}
+
+message DeleteUserResponse {
+  string user_id = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -212,4 +228,8 @@ service EgpService {
   rpc SyncUser (SyncUserRequest) returns (SyncUserResponse);
   // ユーザー情報取得
   rpc GetUser (GetUserRequest) returns (GetUserResponse);
+  // ユーザー情報更新
+  rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
+  // ユーザー情報削除
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
 }
