@@ -27,8 +27,9 @@ enum SortOrderType {
 }
 
 enum YearOrder {
-  YEAR_ORDER_ASC = 0;
-  YEAR_ORDER_DESC = 1;
+  YEAR_ORDER_NONE = 0;
+  YEAR_ORDER_ASC = 1;
+  YEAR_ORDER_DESC = 2;
 }
 
 message Date {
