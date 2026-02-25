@@ -33,15 +33,15 @@ enum YearOrder {
 }
 
 message Date {
-  int32 year = 1;
-  int32 month = 2;
-  int32 day = 3;
+  int64 year = 1;
+  int64 month = 2;
+  int64 day = 3;
 }
 
 message Event {
   int64 id = 1;
   string name = 2;
-  int32 year = 3;
+  int64 year = 3;
   Date start_date = 4;
   Date end_date = 5;
 }
@@ -67,10 +67,10 @@ message BeerTypes {
 message Shop {
   int64 id = 1;
   int64 event_id = 2;
-  int32 year = 34;
+  int64 year = 34;
   CategoryType category_id = 3;
   string category_name = 35;
-  int32 no = 4;
+  int64 no = 4;
   string shop_name = 5;
   string menu_name = 6;
   string menu_image_url = 36;
@@ -80,11 +80,11 @@ message Shop {
   string regular_holiday = 10;
   string business_hours = 11;
   string charge_price = 12;
-  int32 normalized_charge_price = 13;
+  int64 normalized_charge_price = 13;
   string single_price = 14;
-  int32 normalized_single_price = 15;
+  int64 normalized_single_price = 15;
   string set_price = 16;
-  int32 normalized_set_price = 17;
+  int64 normalized_set_price = 17;
   string beer_type = 18;
   string needs_reservation = 19;
   bool normalized_needs_reservation = 20;
@@ -95,14 +95,14 @@ message Shop {
   double latitude = 25;
   double longitude = 26;
   string distance = 27;
-  int32 week_number = 28;
-  int32 day_of_week = 29;
+  int64 week_number = 28;
+  int64 day_of_week = 29;
   string start_time = 30;
   string end_time = 31;
   bool is_holiday = 32;
   bool in_current_sales = 33;
   bool is_stamped = 37;
-  int32 number_of_times = 38;
+  int64 number_of_times = 38;
 }
 
 message ShopLocation {
@@ -116,15 +116,15 @@ message ShopLocation {
 message ShopTime {
   int64 id = 1;
   int64 shop_id = 2;
-  int32 week_number = 3;
-  int32 day_of_week = 4;
+  int64 week_number = 3;
+  int64 day_of_week = 4;
   string start_time = 5;
   string end_time = 6;
   bool is_holiday = 7;
 }
 
 message ShopsTotalRequest {
-  int32 year = 1;
+  int64 year = 1;
 }
 
 message ShopsTotalResponse {
@@ -135,7 +135,7 @@ message ShopsRequest {
   repeated SearchType search_types = 1;
   string user_id = 2;
   string keyword = 3;
-  int32 year = 4;
+  int64 year = 4;
   SortOrderType sort_order = 5;
   double latitude = 6;
   double longitude = 7;
@@ -161,7 +161,7 @@ message StampRequest {
 }
 
 message StampResponse {
-  int32 number_of_times = 1;
+  int64 number_of_times = 1;
 }
 
 message MergeUserStampRequest {
@@ -170,7 +170,7 @@ message MergeUserStampRequest {
 }
 
 message MergeUserStampResponse {
-  int32 stamp_num = 1;
+  int64 stamp_num = 1;
 }
 
 // ユーザー関連メッセージ
@@ -222,15 +222,15 @@ message DefaultYearRequest {
 }
 
 message DefaultYearResponse {
-  int32 year = 1;
+  int64 year = 1;
 }
 
 message YearsRequest {
-    optional YearOrder year_order = 1;
+  optional YearOrder year_order = 1;
 }
 
 message YearsResponse {
-  repeated int32 years = 1;
+  repeated int64 years = 1;
 }
 
 service EgpService {
