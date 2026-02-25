@@ -231,9 +231,9 @@ func (YearOrder) EnumDescriptor() ([]byte, []int) {
 
 type Date struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Year          int32                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
-	Month         int32                  `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
-	Day           int32                  `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
+	Year          int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Month         int64                  `protobuf:"varint,2,opt,name=month,proto3" json:"month,omitempty"`
+	Day           int64                  `protobuf:"varint,3,opt,name=day,proto3" json:"day,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -268,21 +268,21 @@ func (*Date) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *Date) GetYear() int32 {
+func (x *Date) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
 	return 0
 }
 
-func (x *Date) GetMonth() int32 {
+func (x *Date) GetMonth() int64 {
 	if x != nil {
 		return x.Month
 	}
 	return 0
 }
 
-func (x *Date) GetDay() int32 {
+func (x *Date) GetDay() int64 {
 	if x != nil {
 		return x.Day
 	}
@@ -293,7 +293,7 @@ type Event struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	Name          string                 `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Year          int32                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
+	Year          int64                  `protobuf:"varint,3,opt,name=year,proto3" json:"year,omitempty"`
 	StartDate     *Date                  `protobuf:"bytes,4,opt,name=start_date,json=startDate,proto3" json:"start_date,omitempty"`
 	EndDate       *Date                  `protobuf:"bytes,5,opt,name=end_date,json=endDate,proto3" json:"end_date,omitempty"`
 	unknownFields protoimpl.UnknownFields
@@ -344,7 +344,7 @@ func (x *Event) GetName() string {
 	return ""
 }
 
-func (x *Event) GetYear() int32 {
+func (x *Event) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
@@ -561,10 +561,10 @@ type Shop struct {
 	state                      protoimpl.MessageState `protogen:"open.v1"`
 	Id                         int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	EventId                    int64                  `protobuf:"varint,2,opt,name=event_id,json=eventId,proto3" json:"event_id,omitempty"`
-	Year                       int32                  `protobuf:"varint,34,opt,name=year,proto3" json:"year,omitempty"`
+	Year                       int64                  `protobuf:"varint,34,opt,name=year,proto3" json:"year,omitempty"`
 	CategoryId                 CategoryType           `protobuf:"varint,3,opt,name=category_id,json=categoryId,proto3,enum=egp.CategoryType" json:"category_id,omitempty"`
 	CategoryName               string                 `protobuf:"bytes,35,opt,name=category_name,json=categoryName,proto3" json:"category_name,omitempty"`
-	No                         int32                  `protobuf:"varint,4,opt,name=no,proto3" json:"no,omitempty"`
+	No                         int64                  `protobuf:"varint,4,opt,name=no,proto3" json:"no,omitempty"`
 	ShopName                   string                 `protobuf:"bytes,5,opt,name=shop_name,json=shopName,proto3" json:"shop_name,omitempty"`
 	MenuName                   string                 `protobuf:"bytes,6,opt,name=menu_name,json=menuName,proto3" json:"menu_name,omitempty"`
 	MenuImageUrl               string                 `protobuf:"bytes,36,opt,name=menu_image_url,json=menuImageUrl,proto3" json:"menu_image_url,omitempty"`
@@ -574,11 +574,11 @@ type Shop struct {
 	RegularHoliday             string                 `protobuf:"bytes,10,opt,name=regular_holiday,json=regularHoliday,proto3" json:"regular_holiday,omitempty"`
 	BusinessHours              string                 `protobuf:"bytes,11,opt,name=business_hours,json=businessHours,proto3" json:"business_hours,omitempty"`
 	ChargePrice                string                 `protobuf:"bytes,12,opt,name=charge_price,json=chargePrice,proto3" json:"charge_price,omitempty"`
-	NormalizedChargePrice      int32                  `protobuf:"varint,13,opt,name=normalized_charge_price,json=normalizedChargePrice,proto3" json:"normalized_charge_price,omitempty"`
+	NormalizedChargePrice      int64                  `protobuf:"varint,13,opt,name=normalized_charge_price,json=normalizedChargePrice,proto3" json:"normalized_charge_price,omitempty"`
 	SinglePrice                string                 `protobuf:"bytes,14,opt,name=single_price,json=singlePrice,proto3" json:"single_price,omitempty"`
-	NormalizedSinglePrice      int32                  `protobuf:"varint,15,opt,name=normalized_single_price,json=normalizedSinglePrice,proto3" json:"normalized_single_price,omitempty"`
+	NormalizedSinglePrice      int64                  `protobuf:"varint,15,opt,name=normalized_single_price,json=normalizedSinglePrice,proto3" json:"normalized_single_price,omitempty"`
 	SetPrice                   string                 `protobuf:"bytes,16,opt,name=set_price,json=setPrice,proto3" json:"set_price,omitempty"`
-	NormalizedSetPrice         int32                  `protobuf:"varint,17,opt,name=normalized_set_price,json=normalizedSetPrice,proto3" json:"normalized_set_price,omitempty"`
+	NormalizedSetPrice         int64                  `protobuf:"varint,17,opt,name=normalized_set_price,json=normalizedSetPrice,proto3" json:"normalized_set_price,omitempty"`
 	BeerType                   string                 `protobuf:"bytes,18,opt,name=beer_type,json=beerType,proto3" json:"beer_type,omitempty"`
 	NeedsReservation           string                 `protobuf:"bytes,19,opt,name=needs_reservation,json=needsReservation,proto3" json:"needs_reservation,omitempty"`
 	NormalizedNeedsReservation bool                   `protobuf:"varint,20,opt,name=normalized_needs_reservation,json=normalizedNeedsReservation,proto3" json:"normalized_needs_reservation,omitempty"`
@@ -589,14 +589,14 @@ type Shop struct {
 	Latitude                   float64                `protobuf:"fixed64,25,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	Longitude                  float64                `protobuf:"fixed64,26,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	Distance                   string                 `protobuf:"bytes,27,opt,name=distance,proto3" json:"distance,omitempty"`
-	WeekNumber                 int32                  `protobuf:"varint,28,opt,name=week_number,json=weekNumber,proto3" json:"week_number,omitempty"`
-	DayOfWeek                  int32                  `protobuf:"varint,29,opt,name=day_of_week,json=dayOfWeek,proto3" json:"day_of_week,omitempty"`
+	WeekNumber                 int64                  `protobuf:"varint,28,opt,name=week_number,json=weekNumber,proto3" json:"week_number,omitempty"`
+	DayOfWeek                  int64                  `protobuf:"varint,29,opt,name=day_of_week,json=dayOfWeek,proto3" json:"day_of_week,omitempty"`
 	StartTime                  string                 `protobuf:"bytes,30,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime                    string                 `protobuf:"bytes,31,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	IsHoliday                  bool                   `protobuf:"varint,32,opt,name=is_holiday,json=isHoliday,proto3" json:"is_holiday,omitempty"`
 	InCurrentSales             bool                   `protobuf:"varint,33,opt,name=in_current_sales,json=inCurrentSales,proto3" json:"in_current_sales,omitempty"`
 	IsStamped                  bool                   `protobuf:"varint,37,opt,name=is_stamped,json=isStamped,proto3" json:"is_stamped,omitempty"`
-	NumberOfTimes              int32                  `protobuf:"varint,38,opt,name=number_of_times,json=numberOfTimes,proto3" json:"number_of_times,omitempty"`
+	NumberOfTimes              int64                  `protobuf:"varint,38,opt,name=number_of_times,json=numberOfTimes,proto3" json:"number_of_times,omitempty"`
 	unknownFields              protoimpl.UnknownFields
 	sizeCache                  protoimpl.SizeCache
 }
@@ -645,7 +645,7 @@ func (x *Shop) GetEventId() int64 {
 	return 0
 }
 
-func (x *Shop) GetYear() int32 {
+func (x *Shop) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
@@ -666,7 +666,7 @@ func (x *Shop) GetCategoryName() string {
 	return ""
 }
 
-func (x *Shop) GetNo() int32 {
+func (x *Shop) GetNo() int64 {
 	if x != nil {
 		return x.No
 	}
@@ -736,7 +736,7 @@ func (x *Shop) GetChargePrice() string {
 	return ""
 }
 
-func (x *Shop) GetNormalizedChargePrice() int32 {
+func (x *Shop) GetNormalizedChargePrice() int64 {
 	if x != nil {
 		return x.NormalizedChargePrice
 	}
@@ -750,7 +750,7 @@ func (x *Shop) GetSinglePrice() string {
 	return ""
 }
 
-func (x *Shop) GetNormalizedSinglePrice() int32 {
+func (x *Shop) GetNormalizedSinglePrice() int64 {
 	if x != nil {
 		return x.NormalizedSinglePrice
 	}
@@ -764,7 +764,7 @@ func (x *Shop) GetSetPrice() string {
 	return ""
 }
 
-func (x *Shop) GetNormalizedSetPrice() int32 {
+func (x *Shop) GetNormalizedSetPrice() int64 {
 	if x != nil {
 		return x.NormalizedSetPrice
 	}
@@ -841,14 +841,14 @@ func (x *Shop) GetDistance() string {
 	return ""
 }
 
-func (x *Shop) GetWeekNumber() int32 {
+func (x *Shop) GetWeekNumber() int64 {
 	if x != nil {
 		return x.WeekNumber
 	}
 	return 0
 }
 
-func (x *Shop) GetDayOfWeek() int32 {
+func (x *Shop) GetDayOfWeek() int64 {
 	if x != nil {
 		return x.DayOfWeek
 	}
@@ -890,7 +890,7 @@ func (x *Shop) GetIsStamped() bool {
 	return false
 }
 
-func (x *Shop) GetNumberOfTimes() int32 {
+func (x *Shop) GetNumberOfTimes() int64 {
 	if x != nil {
 		return x.NumberOfTimes
 	}
@@ -977,8 +977,8 @@ type ShopTime struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	Id            int64                  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
 	ShopId        int64                  `protobuf:"varint,2,opt,name=shop_id,json=shopId,proto3" json:"shop_id,omitempty"`
-	WeekNumber    int32                  `protobuf:"varint,3,opt,name=week_number,json=weekNumber,proto3" json:"week_number,omitempty"`
-	DayOfWeek     int32                  `protobuf:"varint,4,opt,name=day_of_week,json=dayOfWeek,proto3" json:"day_of_week,omitempty"`
+	WeekNumber    int64                  `protobuf:"varint,3,opt,name=week_number,json=weekNumber,proto3" json:"week_number,omitempty"`
+	DayOfWeek     int64                  `protobuf:"varint,4,opt,name=day_of_week,json=dayOfWeek,proto3" json:"day_of_week,omitempty"`
 	StartTime     string                 `protobuf:"bytes,5,opt,name=start_time,json=startTime,proto3" json:"start_time,omitempty"`
 	EndTime       string                 `protobuf:"bytes,6,opt,name=end_time,json=endTime,proto3" json:"end_time,omitempty"`
 	IsHoliday     bool                   `protobuf:"varint,7,opt,name=is_holiday,json=isHoliday,proto3" json:"is_holiday,omitempty"`
@@ -1030,14 +1030,14 @@ func (x *ShopTime) GetShopId() int64 {
 	return 0
 }
 
-func (x *ShopTime) GetWeekNumber() int32 {
+func (x *ShopTime) GetWeekNumber() int64 {
 	if x != nil {
 		return x.WeekNumber
 	}
 	return 0
 }
 
-func (x *ShopTime) GetDayOfWeek() int32 {
+func (x *ShopTime) GetDayOfWeek() int64 {
 	if x != nil {
 		return x.DayOfWeek
 	}
@@ -1067,7 +1067,7 @@ func (x *ShopTime) GetIsHoliday() bool {
 
 type ShopsTotalRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Year          int32                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Year          int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1102,7 +1102,7 @@ func (*ShopsTotalRequest) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{9}
 }
 
-func (x *ShopsTotalRequest) GetYear() int32 {
+func (x *ShopsTotalRequest) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
@@ -1158,7 +1158,7 @@ type ShopsRequest struct {
 	SearchTypes   []SearchType           `protobuf:"varint,1,rep,packed,name=search_types,json=searchTypes,proto3,enum=egp.SearchType" json:"search_types,omitempty"`
 	UserId        string                 `protobuf:"bytes,2,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`
 	Keyword       string                 `protobuf:"bytes,3,opt,name=keyword,proto3" json:"keyword,omitempty"`
-	Year          int32                  `protobuf:"varint,4,opt,name=year,proto3" json:"year,omitempty"`
+	Year          int64                  `protobuf:"varint,4,opt,name=year,proto3" json:"year,omitempty"`
 	SortOrder     SortOrderType          `protobuf:"varint,5,opt,name=sort_order,json=sortOrder,proto3,enum=egp.SortOrderType" json:"sort_order,omitempty"`
 	Latitude      float64                `protobuf:"fixed64,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	Longitude     float64                `protobuf:"fixed64,7,opt,name=longitude,proto3" json:"longitude,omitempty"`
@@ -1217,7 +1217,7 @@ func (x *ShopsRequest) GetKeyword() string {
 	return ""
 }
 
-func (x *ShopsRequest) GetYear() int32 {
+func (x *ShopsRequest) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
@@ -1447,7 +1447,7 @@ func (x *StampRequest) GetShopId() int64 {
 
 type StampResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	NumberOfTimes int32                  `protobuf:"varint,1,opt,name=number_of_times,json=numberOfTimes,proto3" json:"number_of_times,omitempty"`
+	NumberOfTimes int64                  `protobuf:"varint,1,opt,name=number_of_times,json=numberOfTimes,proto3" json:"number_of_times,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1482,7 +1482,7 @@ func (*StampResponse) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{16}
 }
 
-func (x *StampResponse) GetNumberOfTimes() int32 {
+func (x *StampResponse) GetNumberOfTimes() int64 {
 	if x != nil {
 		return x.NumberOfTimes
 	}
@@ -1543,7 +1543,7 @@ func (x *MergeUserStampRequest) GetAnonymousUserId() string {
 
 type MergeUserStampResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	StampNum      int32                  `protobuf:"varint,1,opt,name=stamp_num,json=stampNum,proto3" json:"stamp_num,omitempty"`
+	StampNum      int64                  `protobuf:"varint,1,opt,name=stamp_num,json=stampNum,proto3" json:"stamp_num,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1578,7 +1578,7 @@ func (*MergeUserStampResponse) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{18}
 }
 
-func (x *MergeUserStampResponse) GetStampNum() int32 {
+func (x *MergeUserStampResponse) GetStampNum() int64 {
 	if x != nil {
 		return x.StampNum
 	}
@@ -2046,7 +2046,7 @@ func (*DefaultYearRequest) Descriptor() ([]byte, []int) {
 
 type DefaultYearResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Year          int32                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
+	Year          int64                  `protobuf:"varint,1,opt,name=year,proto3" json:"year,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2081,7 +2081,7 @@ func (*DefaultYearResponse) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{29}
 }
 
-func (x *DefaultYearResponse) GetYear() int32 {
+func (x *DefaultYearResponse) GetYear() int64 {
 	if x != nil {
 		return x.Year
 	}
@@ -2134,7 +2134,7 @@ func (x *YearsRequest) GetYearOrder() YearOrder {
 
 type YearsResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Years         []int32                `protobuf:"varint,1,rep,packed,name=years,proto3" json:"years,omitempty"`
+	Years         []int64                `protobuf:"varint,1,rep,packed,name=years,proto3" json:"years,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2169,7 +2169,7 @@ func (*YearsResponse) Descriptor() ([]byte, []int) {
 	return file_egp_proto_rawDescGZIP(), []int{31}
 }
 
-func (x *YearsResponse) GetYears() []int32 {
+func (x *YearsResponse) GetYears() []int64 {
 	if x != nil {
 		return x.Years
 	}
@@ -2182,13 +2182,13 @@ const file_egp_proto_rawDesc = "" +
 	"\n" +
 	"\tegp.proto\x12\x03egp\"B\n" +
 	"\x04Date\x12\x12\n" +
-	"\x04year\x18\x01 \x01(\x05R\x04year\x12\x14\n" +
-	"\x05month\x18\x02 \x01(\x05R\x05month\x12\x10\n" +
-	"\x03day\x18\x03 \x01(\x05R\x03day\"\x8f\x01\n" +
+	"\x04year\x18\x01 \x01(\x03R\x04year\x12\x14\n" +
+	"\x05month\x18\x02 \x01(\x03R\x05month\x12\x10\n" +
+	"\x03day\x18\x03 \x01(\x03R\x03day\"\x8f\x01\n" +
 	"\x05Event\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x12\n" +
 	"\x04name\x18\x02 \x01(\tR\x04name\x12\x12\n" +
-	"\x04year\x18\x03 \x01(\x05R\x04year\x12(\n" +
+	"\x04year\x18\x03 \x01(\x03R\x04year\x12(\n" +
 	"\n" +
 	"start_date\x18\x04 \x01(\v2\t.egp.DateR\tstartDate\x12$\n" +
 	"\bend_date\x18\x05 \x01(\v2\t.egp.DateR\aendDate\".\n" +
@@ -2210,11 +2210,11 @@ const file_egp_proto_rawDesc = "" +
 	"\x04Shop\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x19\n" +
 	"\bevent_id\x18\x02 \x01(\x03R\aeventId\x12\x12\n" +
-	"\x04year\x18\" \x01(\x05R\x04year\x122\n" +
+	"\x04year\x18\" \x01(\x03R\x04year\x122\n" +
 	"\vcategory_id\x18\x03 \x01(\x0e2\x11.egp.CategoryTypeR\n" +
 	"categoryId\x12#\n" +
 	"\rcategory_name\x18# \x01(\tR\fcategoryName\x12\x0e\n" +
-	"\x02no\x18\x04 \x01(\x05R\x02no\x12\x1b\n" +
+	"\x02no\x18\x04 \x01(\x03R\x02no\x12\x1b\n" +
 	"\tshop_name\x18\x05 \x01(\tR\bshopName\x12\x1b\n" +
 	"\tmenu_name\x18\x06 \x01(\tR\bmenuName\x12$\n" +
 	"\x0emenu_image_url\x18$ \x01(\tR\fmenuImageUrl\x12\x14\n" +
@@ -2225,11 +2225,11 @@ const file_egp_proto_rawDesc = "" +
 	" \x01(\tR\x0eregularHoliday\x12%\n" +
 	"\x0ebusiness_hours\x18\v \x01(\tR\rbusinessHours\x12!\n" +
 	"\fcharge_price\x18\f \x01(\tR\vchargePrice\x126\n" +
-	"\x17normalized_charge_price\x18\r \x01(\x05R\x15normalizedChargePrice\x12!\n" +
+	"\x17normalized_charge_price\x18\r \x01(\x03R\x15normalizedChargePrice\x12!\n" +
 	"\fsingle_price\x18\x0e \x01(\tR\vsinglePrice\x126\n" +
-	"\x17normalized_single_price\x18\x0f \x01(\x05R\x15normalizedSinglePrice\x12\x1b\n" +
+	"\x17normalized_single_price\x18\x0f \x01(\x03R\x15normalizedSinglePrice\x12\x1b\n" +
 	"\tset_price\x18\x10 \x01(\tR\bsetPrice\x120\n" +
-	"\x14normalized_set_price\x18\x11 \x01(\x05R\x12normalizedSetPrice\x12\x1b\n" +
+	"\x14normalized_set_price\x18\x11 \x01(\x03R\x12normalizedSetPrice\x12\x1b\n" +
 	"\tbeer_type\x18\x12 \x01(\tR\bbeerType\x12+\n" +
 	"\x11needs_reservation\x18\x13 \x01(\tR\x10needsReservation\x12@\n" +
 	"\x1cnormalized_needs_reservation\x18\x14 \x01(\bR\x1anormalizedNeedsReservation\x12!\n" +
@@ -2240,9 +2240,9 @@ const file_egp_proto_rawDesc = "" +
 	"\blatitude\x18\x19 \x01(\x01R\blatitude\x12\x1c\n" +
 	"\tlongitude\x18\x1a \x01(\x01R\tlongitude\x12\x1a\n" +
 	"\bdistance\x18\x1b \x01(\tR\bdistance\x12\x1f\n" +
-	"\vweek_number\x18\x1c \x01(\x05R\n" +
+	"\vweek_number\x18\x1c \x01(\x03R\n" +
 	"weekNumber\x12\x1e\n" +
-	"\vday_of_week\x18\x1d \x01(\x05R\tdayOfWeek\x12\x1d\n" +
+	"\vday_of_week\x18\x1d \x01(\x03R\tdayOfWeek\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x1e \x01(\tR\tstartTime\x12\x19\n" +
 	"\bend_time\x18\x1f \x01(\tR\aendTime\x12\x1d\n" +
@@ -2251,7 +2251,7 @@ const file_egp_proto_rawDesc = "" +
 	"\x10in_current_sales\x18! \x01(\bR\x0einCurrentSales\x12\x1d\n" +
 	"\n" +
 	"is_stamped\x18% \x01(\bR\tisStamped\x12&\n" +
-	"\x0fnumber_of_times\x18& \x01(\x05R\rnumberOfTimes\"\x8d\x01\n" +
+	"\x0fnumber_of_times\x18& \x01(\x03R\rnumberOfTimes\"\x8d\x01\n" +
 	"\fShopLocation\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\x03R\x06shopId\x12\x1a\n" +
@@ -2261,23 +2261,23 @@ const file_egp_proto_rawDesc = "" +
 	"\bShopTime\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\x03R\x06shopId\x12\x1f\n" +
-	"\vweek_number\x18\x03 \x01(\x05R\n" +
+	"\vweek_number\x18\x03 \x01(\x03R\n" +
 	"weekNumber\x12\x1e\n" +
-	"\vday_of_week\x18\x04 \x01(\x05R\tdayOfWeek\x12\x1d\n" +
+	"\vday_of_week\x18\x04 \x01(\x03R\tdayOfWeek\x12\x1d\n" +
 	"\n" +
 	"start_time\x18\x05 \x01(\tR\tstartTime\x12\x19\n" +
 	"\bend_time\x18\x06 \x01(\tR\aendTime\x12\x1d\n" +
 	"\n" +
 	"is_holiday\x18\a \x01(\bR\tisHoliday\"'\n" +
 	"\x11ShopsTotalRequest\x12\x12\n" +
-	"\x04year\x18\x01 \x01(\x05R\x04year\"1\n" +
+	"\x04year\x18\x01 \x01(\x03R\x04year\"1\n" +
 	"\x12ShopsTotalResponse\x12\x1b\n" +
 	"\ttotal_num\x18\x01 \x01(\x03R\btotalNum\"\xf6\x01\n" +
 	"\fShopsRequest\x122\n" +
 	"\fsearch_types\x18\x01 \x03(\x0e2\x0f.egp.SearchTypeR\vsearchTypes\x12\x17\n" +
 	"\auser_id\x18\x02 \x01(\tR\x06userId\x12\x18\n" +
 	"\akeyword\x18\x03 \x01(\tR\akeyword\x12\x12\n" +
-	"\x04year\x18\x04 \x01(\x05R\x04year\x121\n" +
+	"\x04year\x18\x04 \x01(\x03R\x04year\x121\n" +
 	"\n" +
 	"sort_order\x18\x05 \x01(\x0e2\x12.egp.SortOrderTypeR\tsortOrder\x12\x1a\n" +
 	"\blatitude\x18\x06 \x01(\x01R\blatitude\x12\x1c\n" +
@@ -2294,12 +2294,12 @@ const file_egp_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x17\n" +
 	"\ashop_id\x18\x02 \x01(\x03R\x06shopId\"7\n" +
 	"\rStampResponse\x12&\n" +
-	"\x0fnumber_of_times\x18\x01 \x01(\x05R\rnumberOfTimes\"\\\n" +
+	"\x0fnumber_of_times\x18\x01 \x01(\x03R\rnumberOfTimes\"\\\n" +
 	"\x15MergeUserStampRequest\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12*\n" +
 	"\x11anonymous_user_id\x18\x02 \x01(\tR\x0fanonymousUserId\"5\n" +
 	"\x16MergeUserStampResponse\x12\x1b\n" +
-	"\tstamp_num\x18\x01 \x01(\x05R\bstampNum\"\x9c\x01\n" +
+	"\tstamp_num\x18\x01 \x01(\x03R\bstampNum\"\x9c\x01\n" +
 	"\x04User\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12!\n" +
@@ -2325,13 +2325,13 @@ const file_egp_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x14\n" +
 	"\x12DefaultYearRequest\")\n" +
 	"\x13DefaultYearResponse\x12\x12\n" +
-	"\x04year\x18\x01 \x01(\x05R\x04year\"Q\n" +
+	"\x04year\x18\x01 \x01(\x03R\x04year\"Q\n" +
 	"\fYearsRequest\x122\n" +
 	"\n" +
 	"year_order\x18\x01 \x01(\x0e2\x0e.egp.YearOrderH\x00R\tyearOrder\x88\x01\x01B\r\n" +
 	"\v_year_order\"%\n" +
 	"\rYearsResponse\x12\x14\n" +
-	"\x05years\x18\x01 \x03(\x05R\x05years*\xba\x01\n" +
+	"\x05years\x18\x01 \x03(\x03R\x05years*\xba\x01\n" +
 	"\fCategoryType\x12\x16\n" +
 	"\x12CATEGORY_TYPE_NONE\x10\x00\x12\x19\n" +
 	"\x15CATEGORY_TYPE_EBISU_1\x10\x01\x12\x19\n" +
