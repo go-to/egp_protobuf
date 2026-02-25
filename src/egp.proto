@@ -26,6 +26,11 @@ enum SortOrderType {
   SORT_ORDER_DISTANCE = 1;
 }
 
+enum YearOrder {
+  YEAR_ORDER_ASC = 0;
+  YEAR_ORDER_DESC = 1;
+}
+
 message Date {
   int32 year = 1;
   int32 month = 2;
@@ -211,6 +216,22 @@ message DeleteUserResponse {
   string user_id = 1;
 }
 
+message DefaultYearRequest {
+  // 空リクエスト
+}
+
+message DefaultYearResponse {
+  int32 year = 1;
+}
+
+message YearsRequest {
+    YearOrder year_order = 1;
+}
+
+message YearsResponse {
+  repeated int32 years = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -232,4 +253,8 @@ service EgpService {
   rpc UpdateUser (UpdateUserRequest) returns (UpdateUserResponse);
   // ユーザー情報削除
   rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  // デフォルトの年取得
+  rpc GetDefaultYear (DefaultYearRequest) returns (DefaultYearResponse);
+  // 年一覧取得
+  rpc GetYears (YearsRequest) returns (YearsResponse);
 }
