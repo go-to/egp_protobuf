@@ -183,19 +183,22 @@ func (SortOrderType) EnumDescriptor() ([]byte, []int) {
 type YearOrder int32
 
 const (
-	YearOrder_YEAR_ORDER_ASC  YearOrder = 0
-	YearOrder_YEAR_ORDER_DESC YearOrder = 1
+	YearOrder_YEAR_ORDER_NONE YearOrder = 0
+	YearOrder_YEAR_ORDER_ASC  YearOrder = 1
+	YearOrder_YEAR_ORDER_DESC YearOrder = 2
 )
 
 // Enum value maps for YearOrder.
 var (
 	YearOrder_name = map[int32]string{
-		0: "YEAR_ORDER_ASC",
-		1: "YEAR_ORDER_DESC",
+		0: "YEAR_ORDER_NONE",
+		1: "YEAR_ORDER_ASC",
+		2: "YEAR_ORDER_DESC",
 	}
 	YearOrder_value = map[string]int32{
-		"YEAR_ORDER_ASC":  0,
-		"YEAR_ORDER_DESC": 1,
+		"YEAR_ORDER_NONE": 0,
+		"YEAR_ORDER_ASC":  1,
+		"YEAR_ORDER_DESC": 2,
 	}
 )
 
@@ -2126,7 +2129,7 @@ func (x *YearsRequest) GetYearOrder() YearOrder {
 	if x != nil && x.YearOrder != nil {
 		return *x.YearOrder
 	}
-	return YearOrder_YEAR_ORDER_ASC
+	return YearOrder_YEAR_ORDER_NONE
 }
 
 type YearsResponse struct {
@@ -2345,10 +2348,11 @@ const file_egp_proto_rawDesc = "" +
 	"\x19SEARCH_TYPE_BEER_COCKTAIL\x10\x04*;\n" +
 	"\rSortOrderType\x12\x11\n" +
 	"\rSORT_ORDER_NO\x10\x00\x12\x17\n" +
-	"\x13SORT_ORDER_DISTANCE\x10\x01*4\n" +
-	"\tYearOrder\x12\x12\n" +
-	"\x0eYEAR_ORDER_ASC\x10\x00\x12\x13\n" +
-	"\x0fYEAR_ORDER_DESC\x10\x012\xca\x05\n" +
+	"\x13SORT_ORDER_DISTANCE\x10\x01*I\n" +
+	"\tYearOrder\x12\x13\n" +
+	"\x0fYEAR_ORDER_NONE\x10\x00\x12\x12\n" +
+	"\x0eYEAR_ORDER_ASC\x10\x01\x12\x13\n" +
+	"\x0fYEAR_ORDER_DESC\x10\x022\xca\x05\n" +
 	"\n" +
 	"EgpService\x12@\n" +
 	"\rGetShopsTotal\x12\x16.egp.ShopsTotalRequest\x1a\x17.egp.ShopsTotalResponse\x121\n" +
