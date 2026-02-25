@@ -2087,7 +2087,7 @@ func (x *DefaultYearResponse) GetYear() int32 {
 
 type YearsRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	YearOrder     YearOrder              `protobuf:"varint,1,opt,name=year_order,json=yearOrder,proto3,enum=egp.YearOrder" json:"year_order,omitempty"`
+	YearOrder     *YearOrder             `protobuf:"varint,1,opt,name=year_order,json=yearOrder,proto3,enum=egp.YearOrder,oneof" json:"year_order,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -2123,8 +2123,8 @@ func (*YearsRequest) Descriptor() ([]byte, []int) {
 }
 
 func (x *YearsRequest) GetYearOrder() YearOrder {
-	if x != nil {
-		return x.YearOrder
+	if x != nil && x.YearOrder != nil {
+		return *x.YearOrder
 	}
 	return YearOrder_YEAR_ORDER_ASC
 }
@@ -2322,10 +2322,11 @@ const file_egp_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\"\x14\n" +
 	"\x12DefaultYearRequest\")\n" +
 	"\x13DefaultYearResponse\x12\x12\n" +
-	"\x04year\x18\x01 \x01(\x05R\x04year\"=\n" +
-	"\fYearsRequest\x12-\n" +
+	"\x04year\x18\x01 \x01(\x05R\x04year\"Q\n" +
+	"\fYearsRequest\x122\n" +
 	"\n" +
-	"year_order\x18\x01 \x01(\x0e2\x0e.egp.YearOrderR\tyearOrder\"%\n" +
+	"year_order\x18\x01 \x01(\x0e2\x0e.egp.YearOrderH\x00R\tyearOrder\x88\x01\x01B\r\n" +
+	"\v_year_order\"%\n" +
 	"\rYearsResponse\x12\x14\n" +
 	"\x05years\x18\x01 \x03(\x05R\x05years*\xba\x01\n" +
 	"\fCategoryType\x12\x16\n" +
@@ -2467,6 +2468,7 @@ func file_egp_proto_init() {
 	if File_egp_proto != nil {
 		return
 	}
+	file_egp_proto_msgTypes[30].OneofWrappers = []any{}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{

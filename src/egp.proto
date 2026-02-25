@@ -225,7 +225,7 @@ message DefaultYearResponse {
 }
 
 message YearsRequest {
-    YearOrder year_order = 1;
+    optional YearOrder year_order = 1;
 }
 
 message YearsResponse {
