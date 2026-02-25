@@ -19,18 +19,19 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EgpService_GetShopsTotal_FullMethodName  = "/egp.EgpService/GetShopsTotal"
-	EgpService_GetShops_FullMethodName       = "/egp.EgpService/GetShops"
-	EgpService_GetShop_FullMethodName        = "/egp.EgpService/GetShop"
-	EgpService_AddStamp_FullMethodName       = "/egp.EgpService/AddStamp"
-	EgpService_DeleteStamp_FullMethodName    = "/egp.EgpService/DeleteStamp"
-	EgpService_MergeUserStamp_FullMethodName = "/egp.EgpService/MergeUserStamp"
-	EgpService_SyncUser_FullMethodName       = "/egp.EgpService/SyncUser"
-	EgpService_GetUser_FullMethodName        = "/egp.EgpService/GetUser"
-	EgpService_UpdateUser_FullMethodName     = "/egp.EgpService/UpdateUser"
-	EgpService_DeleteUser_FullMethodName     = "/egp.EgpService/DeleteUser"
-	EgpService_GetDefaultYear_FullMethodName = "/egp.EgpService/GetDefaultYear"
-	EgpService_GetYears_FullMethodName       = "/egp.EgpService/GetYears"
+	EgpService_GetShopsTotal_FullMethodName    = "/egp.EgpService/GetShopsTotal"
+	EgpService_GetShops_FullMethodName         = "/egp.EgpService/GetShops"
+	EgpService_GetShop_FullMethodName          = "/egp.EgpService/GetShop"
+	EgpService_AddStamp_FullMethodName         = "/egp.EgpService/AddStamp"
+	EgpService_DeleteStamp_FullMethodName      = "/egp.EgpService/DeleteStamp"
+	EgpService_MergeUserStamp_FullMethodName   = "/egp.EgpService/MergeUserStamp"
+	EgpService_SyncUser_FullMethodName         = "/egp.EgpService/SyncUser"
+	EgpService_GetUser_FullMethodName          = "/egp.EgpService/GetUser"
+	EgpService_UpdateUser_FullMethodName       = "/egp.EgpService/UpdateUser"
+	EgpService_DeleteUser_FullMethodName       = "/egp.EgpService/DeleteUser"
+	EgpService_GetDefaultYear_FullMethodName   = "/egp.EgpService/GetDefaultYear"
+	EgpService_GetYears_FullMethodName         = "/egp.EgpService/GetYears"
+	EgpService_RegisterFcmToken_FullMethodName = "/egp.EgpService/RegisterFcmToken"
 )
 
 // EgpServiceClient is the client API for EgpService service.
@@ -61,6 +62,8 @@ type EgpServiceClient interface {
 	GetDefaultYear(ctx context.Context, in *DefaultYearRequest, opts ...grpc.CallOption) (*DefaultYearResponse, error)
 	// 年一覧取得
 	GetYears(ctx context.Context, in *YearsRequest, opts ...grpc.CallOption) (*YearsResponse, error)
+	// FCMトークン登録
+	RegisterFcmToken(ctx context.Context, in *RegisterFcmTokenRequest, opts ...grpc.CallOption) (*RegisterFcmTokenResponse, error)
 }
 
 type egpServiceClient struct {
@@ -191,6 +194,16 @@ func (c *egpServiceClient) GetYears(ctx context.Context, in *YearsRequest, opts 
 	return out, nil
 }
 
+func (c *egpServiceClient) RegisterFcmToken(ctx context.Context, in *RegisterFcmTokenRequest, opts ...grpc.CallOption) (*RegisterFcmTokenResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(RegisterFcmTokenResponse)
+	err := c.cc.Invoke(ctx, EgpService_RegisterFcmToken_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EgpServiceServer is the server API for EgpService service.
 // All implementations must embed UnimplementedEgpServiceServer
 // for forward compatibility.
@@ -219,6 +232,8 @@ type EgpServiceServer interface {
 	GetDefaultYear(context.Context, *DefaultYearRequest) (*DefaultYearResponse, error)
 	// 年一覧取得
 	GetYears(context.Context, *YearsRequest) (*YearsResponse, error)
+	// FCMトークン登録
+	RegisterFcmToken(context.Context, *RegisterFcmTokenRequest) (*RegisterFcmTokenResponse, error)
 	mustEmbedUnimplementedEgpServiceServer()
 }
 
@@ -264,6 +279,9 @@ func (UnimplementedEgpServiceServer) GetDefaultYear(context.Context, *DefaultYea
 }
 func (UnimplementedEgpServiceServer) GetYears(context.Context, *YearsRequest) (*YearsResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method GetYears not implemented")
+}
+func (UnimplementedEgpServiceServer) RegisterFcmToken(context.Context, *RegisterFcmTokenRequest) (*RegisterFcmTokenResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method RegisterFcmToken not implemented")
 }
 func (UnimplementedEgpServiceServer) mustEmbedUnimplementedEgpServiceServer() {}
 func (UnimplementedEgpServiceServer) testEmbeddedByValue()                    {}
@@ -502,6 +520,24 @@ func _EgpService_GetYears_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EgpService_RegisterFcmToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(RegisterFcmTokenRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).RegisterFcmToken(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_RegisterFcmToken_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).RegisterFcmToken(ctx, req.(*RegisterFcmTokenRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // EgpService_ServiceDesc is the grpc.ServiceDesc for EgpService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -556,6 +592,10 @@ var EgpService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetYears",
 			Handler:    _EgpService_GetYears_Handler,
+		},
+		{
+			MethodName: "RegisterFcmToken",
+			Handler:    _EgpService_RegisterFcmToken_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
