@@ -2176,6 +2176,103 @@ func (x *YearsResponse) GetYears() []int64 {
 	return nil
 }
 
+// FCMデバイストークン登録
+type RegisterFcmTokenRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	FcmToken      string                 `protobuf:"bytes,1,opt,name=fcm_token,json=fcmToken,proto3" json:"fcm_token,omitempty"`       // FCMトークン
+	DeviceType    string                 `protobuf:"bytes,2,opt,name=device_type,json=deviceType,proto3" json:"device_type,omitempty"` // デバイスタイプ（"ios" or "android"）
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterFcmTokenRequest) Reset() {
+	*x = RegisterFcmTokenRequest{}
+	mi := &file_egp_proto_msgTypes[32]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterFcmTokenRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterFcmTokenRequest) ProtoMessage() {}
+
+func (x *RegisterFcmTokenRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[32]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterFcmTokenRequest.ProtoReflect.Descriptor instead.
+func (*RegisterFcmTokenRequest) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{32}
+}
+
+func (x *RegisterFcmTokenRequest) GetFcmToken() string {
+	if x != nil {
+		return x.FcmToken
+	}
+	return ""
+}
+
+func (x *RegisterFcmTokenRequest) GetDeviceType() string {
+	if x != nil {
+		return x.DeviceType
+	}
+	return ""
+}
+
+type RegisterFcmTokenResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Success       bool                   `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *RegisterFcmTokenResponse) Reset() {
+	*x = RegisterFcmTokenResponse{}
+	mi := &file_egp_proto_msgTypes[33]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *RegisterFcmTokenResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*RegisterFcmTokenResponse) ProtoMessage() {}
+
+func (x *RegisterFcmTokenResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[33]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use RegisterFcmTokenResponse.ProtoReflect.Descriptor instead.
+func (*RegisterFcmTokenResponse) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{33}
+}
+
+func (x *RegisterFcmTokenResponse) GetSuccess() bool {
+	if x != nil {
+		return x.Success
+	}
+	return false
+}
+
 var File_egp_proto protoreflect.FileDescriptor
 
 const file_egp_proto_rawDesc = "" +
@@ -2331,7 +2428,13 @@ const file_egp_proto_rawDesc = "" +
 	"year_order\x18\x01 \x01(\x0e2\x0e.egp.YearOrderH\x00R\tyearOrder\x88\x01\x01B\r\n" +
 	"\v_year_order\"%\n" +
 	"\rYearsResponse\x12\x14\n" +
-	"\x05years\x18\x01 \x03(\x03R\x05years*\xba\x01\n" +
+	"\x05years\x18\x01 \x03(\x03R\x05years\"W\n" +
+	"\x17RegisterFcmTokenRequest\x12\x1b\n" +
+	"\tfcm_token\x18\x01 \x01(\tR\bfcmToken\x12\x1f\n" +
+	"\vdevice_type\x18\x02 \x01(\tR\n" +
+	"deviceType\"4\n" +
+	"\x18RegisterFcmTokenResponse\x12\x18\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess*\xba\x01\n" +
 	"\fCategoryType\x12\x16\n" +
 	"\x12CATEGORY_TYPE_NONE\x10\x00\x12\x19\n" +
 	"\x15CATEGORY_TYPE_EBISU_1\x10\x01\x12\x19\n" +
@@ -2352,7 +2455,7 @@ const file_egp_proto_rawDesc = "" +
 	"\tYearOrder\x12\x13\n" +
 	"\x0fYEAR_ORDER_NONE\x10\x00\x12\x12\n" +
 	"\x0eYEAR_ORDER_ASC\x10\x01\x12\x13\n" +
-	"\x0fYEAR_ORDER_DESC\x10\x022\xca\x05\n" +
+	"\x0fYEAR_ORDER_DESC\x10\x022\x9b\x06\n" +
 	"\n" +
 	"EgpService\x12@\n" +
 	"\rGetShopsTotal\x12\x16.egp.ShopsTotalRequest\x1a\x17.egp.ShopsTotalResponse\x121\n" +
@@ -2368,7 +2471,8 @@ const file_egp_proto_rawDesc = "" +
 	"\n" +
 	"DeleteUser\x12\x16.egp.DeleteUserRequest\x1a\x17.egp.DeleteUserResponse\x12C\n" +
 	"\x0eGetDefaultYear\x12\x17.egp.DefaultYearRequest\x1a\x18.egp.DefaultYearResponse\x121\n" +
-	"\bGetYears\x12\x11.egp.YearsRequest\x1a\x12.egp.YearsResponseB\"Z github.com/go-to/egp_protobuf/pbb\x06proto3"
+	"\bGetYears\x12\x11.egp.YearsRequest\x1a\x12.egp.YearsResponse\x12O\n" +
+	"\x10RegisterFcmToken\x12\x1c.egp.RegisterFcmTokenRequest\x1a\x1d.egp.RegisterFcmTokenResponseB\"Z github.com/go-to/egp_protobuf/pbb\x06proto3"
 
 var (
 	file_egp_proto_rawDescOnce sync.Once
@@ -2383,44 +2487,46 @@ func file_egp_proto_rawDescGZIP() []byte {
 }
 
 var file_egp_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 32)
+var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_egp_proto_goTypes = []any{
-	(CategoryType)(0),              // 0: egp.CategoryType
-	(SearchType)(0),                // 1: egp.SearchType
-	(SortOrderType)(0),             // 2: egp.SortOrderType
-	(YearOrder)(0),                 // 3: egp.YearOrder
-	(*Date)(nil),                   // 4: egp.Date
-	(*Event)(nil),                  // 5: egp.Event
-	(*Category)(nil),               // 6: egp.Category
-	(*Categories)(nil),             // 7: egp.Categories
-	(*BeerType)(nil),               // 8: egp.BeerType
-	(*BeerTypes)(nil),              // 9: egp.BeerTypes
-	(*Shop)(nil),                   // 10: egp.Shop
-	(*ShopLocation)(nil),           // 11: egp.ShopLocation
-	(*ShopTime)(nil),               // 12: egp.ShopTime
-	(*ShopsTotalRequest)(nil),      // 13: egp.ShopsTotalRequest
-	(*ShopsTotalResponse)(nil),     // 14: egp.ShopsTotalResponse
-	(*ShopsRequest)(nil),           // 15: egp.ShopsRequest
-	(*ShopsResponse)(nil),          // 16: egp.ShopsResponse
-	(*ShopRequest)(nil),            // 17: egp.ShopRequest
-	(*ShopResponse)(nil),           // 18: egp.ShopResponse
-	(*StampRequest)(nil),           // 19: egp.StampRequest
-	(*StampResponse)(nil),          // 20: egp.StampResponse
-	(*MergeUserStampRequest)(nil),  // 21: egp.MergeUserStampRequest
-	(*MergeUserStampResponse)(nil), // 22: egp.MergeUserStampResponse
-	(*User)(nil),                   // 23: egp.User
-	(*SyncUserRequest)(nil),        // 24: egp.SyncUserRequest
-	(*SyncUserResponse)(nil),       // 25: egp.SyncUserResponse
-	(*GetUserRequest)(nil),         // 26: egp.GetUserRequest
-	(*GetUserResponse)(nil),        // 27: egp.GetUserResponse
-	(*UpdateUserRequest)(nil),      // 28: egp.UpdateUserRequest
-	(*UpdateUserResponse)(nil),     // 29: egp.UpdateUserResponse
-	(*DeleteUserRequest)(nil),      // 30: egp.DeleteUserRequest
-	(*DeleteUserResponse)(nil),     // 31: egp.DeleteUserResponse
-	(*DefaultYearRequest)(nil),     // 32: egp.DefaultYearRequest
-	(*DefaultYearResponse)(nil),    // 33: egp.DefaultYearResponse
-	(*YearsRequest)(nil),           // 34: egp.YearsRequest
-	(*YearsResponse)(nil),          // 35: egp.YearsResponse
+	(CategoryType)(0),                // 0: egp.CategoryType
+	(SearchType)(0),                  // 1: egp.SearchType
+	(SortOrderType)(0),               // 2: egp.SortOrderType
+	(YearOrder)(0),                   // 3: egp.YearOrder
+	(*Date)(nil),                     // 4: egp.Date
+	(*Event)(nil),                    // 5: egp.Event
+	(*Category)(nil),                 // 6: egp.Category
+	(*Categories)(nil),               // 7: egp.Categories
+	(*BeerType)(nil),                 // 8: egp.BeerType
+	(*BeerTypes)(nil),                // 9: egp.BeerTypes
+	(*Shop)(nil),                     // 10: egp.Shop
+	(*ShopLocation)(nil),             // 11: egp.ShopLocation
+	(*ShopTime)(nil),                 // 12: egp.ShopTime
+	(*ShopsTotalRequest)(nil),        // 13: egp.ShopsTotalRequest
+	(*ShopsTotalResponse)(nil),       // 14: egp.ShopsTotalResponse
+	(*ShopsRequest)(nil),             // 15: egp.ShopsRequest
+	(*ShopsResponse)(nil),            // 16: egp.ShopsResponse
+	(*ShopRequest)(nil),              // 17: egp.ShopRequest
+	(*ShopResponse)(nil),             // 18: egp.ShopResponse
+	(*StampRequest)(nil),             // 19: egp.StampRequest
+	(*StampResponse)(nil),            // 20: egp.StampResponse
+	(*MergeUserStampRequest)(nil),    // 21: egp.MergeUserStampRequest
+	(*MergeUserStampResponse)(nil),   // 22: egp.MergeUserStampResponse
+	(*User)(nil),                     // 23: egp.User
+	(*SyncUserRequest)(nil),          // 24: egp.SyncUserRequest
+	(*SyncUserResponse)(nil),         // 25: egp.SyncUserResponse
+	(*GetUserRequest)(nil),           // 26: egp.GetUserRequest
+	(*GetUserResponse)(nil),          // 27: egp.GetUserResponse
+	(*UpdateUserRequest)(nil),        // 28: egp.UpdateUserRequest
+	(*UpdateUserResponse)(nil),       // 29: egp.UpdateUserResponse
+	(*DeleteUserRequest)(nil),        // 30: egp.DeleteUserRequest
+	(*DeleteUserResponse)(nil),       // 31: egp.DeleteUserResponse
+	(*DefaultYearRequest)(nil),       // 32: egp.DefaultYearRequest
+	(*DefaultYearResponse)(nil),      // 33: egp.DefaultYearResponse
+	(*YearsRequest)(nil),             // 34: egp.YearsRequest
+	(*YearsResponse)(nil),            // 35: egp.YearsResponse
+	(*RegisterFcmTokenRequest)(nil),  // 36: egp.RegisterFcmTokenRequest
+	(*RegisterFcmTokenResponse)(nil), // 37: egp.RegisterFcmTokenResponse
 }
 var file_egp_proto_depIdxs = []int32{
 	4,  // 0: egp.Event.start_date:type_name -> egp.Date
@@ -2448,20 +2554,22 @@ var file_egp_proto_depIdxs = []int32{
 	30, // 22: egp.EgpService.DeleteUser:input_type -> egp.DeleteUserRequest
 	32, // 23: egp.EgpService.GetDefaultYear:input_type -> egp.DefaultYearRequest
 	34, // 24: egp.EgpService.GetYears:input_type -> egp.YearsRequest
-	14, // 25: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
-	16, // 26: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
-	18, // 27: egp.EgpService.GetShop:output_type -> egp.ShopResponse
-	20, // 28: egp.EgpService.AddStamp:output_type -> egp.StampResponse
-	20, // 29: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
-	22, // 30: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
-	25, // 31: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
-	27, // 32: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
-	29, // 33: egp.EgpService.UpdateUser:output_type -> egp.UpdateUserResponse
-	31, // 34: egp.EgpService.DeleteUser:output_type -> egp.DeleteUserResponse
-	33, // 35: egp.EgpService.GetDefaultYear:output_type -> egp.DefaultYearResponse
-	35, // 36: egp.EgpService.GetYears:output_type -> egp.YearsResponse
-	25, // [25:37] is the sub-list for method output_type
-	13, // [13:25] is the sub-list for method input_type
+	36, // 25: egp.EgpService.RegisterFcmToken:input_type -> egp.RegisterFcmTokenRequest
+	14, // 26: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
+	16, // 27: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
+	18, // 28: egp.EgpService.GetShop:output_type -> egp.ShopResponse
+	20, // 29: egp.EgpService.AddStamp:output_type -> egp.StampResponse
+	20, // 30: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
+	22, // 31: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
+	25, // 32: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
+	27, // 33: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
+	29, // 34: egp.EgpService.UpdateUser:output_type -> egp.UpdateUserResponse
+	31, // 35: egp.EgpService.DeleteUser:output_type -> egp.DeleteUserResponse
+	33, // 36: egp.EgpService.GetDefaultYear:output_type -> egp.DefaultYearResponse
+	35, // 37: egp.EgpService.GetYears:output_type -> egp.YearsResponse
+	37, // 38: egp.EgpService.RegisterFcmToken:output_type -> egp.RegisterFcmTokenResponse
+	26, // [26:39] is the sub-list for method output_type
+	13, // [13:26] is the sub-list for method input_type
 	13, // [13:13] is the sub-list for extension type_name
 	13, // [13:13] is the sub-list for extension extendee
 	0,  // [0:13] is the sub-list for field type_name
@@ -2479,7 +2587,7 @@ func file_egp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_egp_proto_rawDesc), len(file_egp_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   32,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

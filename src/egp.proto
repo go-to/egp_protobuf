@@ -233,6 +233,16 @@ message YearsResponse {
   repeated int64 years = 1;
 }
 
+// FCMデバイストークン登録
+message RegisterFcmTokenRequest {
+  string fcm_token = 1;        // FCMトークン
+  string device_type = 2;      // デバイスタイプ（"ios" or "android"）
+}
+
+message RegisterFcmTokenResponse {
+  bool success = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -258,4 +268,6 @@ service EgpService {
   rpc GetDefaultYear (DefaultYearRequest) returns (DefaultYearResponse);
   // 年一覧取得
   rpc GetYears (YearsRequest) returns (YearsResponse);
+  // FCMトークン登録
+  rpc RegisterFcmToken (RegisterFcmTokenRequest) returns (RegisterFcmTokenResponse);
 }
