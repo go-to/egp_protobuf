@@ -19,19 +19,20 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	EgpService_GetShopsTotal_FullMethodName    = "/egp.EgpService/GetShopsTotal"
-	EgpService_GetShops_FullMethodName         = "/egp.EgpService/GetShops"
-	EgpService_GetShop_FullMethodName          = "/egp.EgpService/GetShop"
-	EgpService_AddStamp_FullMethodName         = "/egp.EgpService/AddStamp"
-	EgpService_DeleteStamp_FullMethodName      = "/egp.EgpService/DeleteStamp"
-	EgpService_MergeUserStamp_FullMethodName   = "/egp.EgpService/MergeUserStamp"
-	EgpService_SyncUser_FullMethodName         = "/egp.EgpService/SyncUser"
-	EgpService_GetUser_FullMethodName          = "/egp.EgpService/GetUser"
-	EgpService_UpdateUser_FullMethodName       = "/egp.EgpService/UpdateUser"
-	EgpService_DeleteUser_FullMethodName       = "/egp.EgpService/DeleteUser"
-	EgpService_GetDefaultYear_FullMethodName   = "/egp.EgpService/GetDefaultYear"
-	EgpService_GetYears_FullMethodName         = "/egp.EgpService/GetYears"
-	EgpService_RegisterFcmToken_FullMethodName = "/egp.EgpService/RegisterFcmToken"
+	EgpService_GetShopsTotal_FullMethodName         = "/egp.EgpService/GetShopsTotal"
+	EgpService_GetShops_FullMethodName              = "/egp.EgpService/GetShops"
+	EgpService_GetShop_FullMethodName               = "/egp.EgpService/GetShop"
+	EgpService_AddStamp_FullMethodName              = "/egp.EgpService/AddStamp"
+	EgpService_DeleteStamp_FullMethodName           = "/egp.EgpService/DeleteStamp"
+	EgpService_MergeUserStamp_FullMethodName        = "/egp.EgpService/MergeUserStamp"
+	EgpService_SyncUser_FullMethodName              = "/egp.EgpService/SyncUser"
+	EgpService_GetUser_FullMethodName               = "/egp.EgpService/GetUser"
+	EgpService_UpdateUser_FullMethodName            = "/egp.EgpService/UpdateUser"
+	EgpService_DeleteUser_FullMethodName            = "/egp.EgpService/DeleteUser"
+	EgpService_GetDefaultYear_FullMethodName        = "/egp.EgpService/GetDefaultYear"
+	EgpService_GetYears_FullMethodName              = "/egp.EgpService/GetYears"
+	EgpService_RegisterFcmToken_FullMethodName      = "/egp.EgpService/RegisterFcmToken"
+	EgpService_SendVerificationEmail_FullMethodName = "/egp.EgpService/SendVerificationEmail"
 )
 
 // EgpServiceClient is the client API for EgpService service.
@@ -64,6 +65,8 @@ type EgpServiceClient interface {
 	GetYears(ctx context.Context, in *YearsRequest, opts ...grpc.CallOption) (*YearsResponse, error)
 	// FCMトークン登録
 	RegisterFcmToken(ctx context.Context, in *RegisterFcmTokenRequest, opts ...grpc.CallOption) (*RegisterFcmTokenResponse, error)
+	// メール確認メール送信
+	SendVerificationEmail(ctx context.Context, in *SendVerificationEmailRequest, opts ...grpc.CallOption) (*SendVerificationEmailResponse, error)
 }
 
 type egpServiceClient struct {
@@ -204,6 +207,16 @@ func (c *egpServiceClient) RegisterFcmToken(ctx context.Context, in *RegisterFcm
 	return out, nil
 }
 
+func (c *egpServiceClient) SendVerificationEmail(ctx context.Context, in *SendVerificationEmailRequest, opts ...grpc.CallOption) (*SendVerificationEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SendVerificationEmailResponse)
+	err := c.cc.Invoke(ctx, EgpService_SendVerificationEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // EgpServiceServer is the server API for EgpService service.
 // All implementations must embed UnimplementedEgpServiceServer
 // for forward compatibility.
@@ -234,6 +247,8 @@ type EgpServiceServer interface {
 	GetYears(context.Context, *YearsRequest) (*YearsResponse, error)
 	// FCMトークン登録
 	RegisterFcmToken(context.Context, *RegisterFcmTokenRequest) (*RegisterFcmTokenResponse, error)
+	// メール確認メール送信
+	SendVerificationEmail(context.Context, *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error)
 	mustEmbedUnimplementedEgpServiceServer()
 }
 
@@ -282,6 +297,9 @@ func (UnimplementedEgpServiceServer) GetYears(context.Context, *YearsRequest) (*
 }
 func (UnimplementedEgpServiceServer) RegisterFcmToken(context.Context, *RegisterFcmTokenRequest) (*RegisterFcmTokenResponse, error) {
 	return nil, status.Error(codes.Unimplemented, "method RegisterFcmToken not implemented")
+}
+func (UnimplementedEgpServiceServer) SendVerificationEmail(context.Context, *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method SendVerificationEmail not implemented")
 }
 func (UnimplementedEgpServiceServer) mustEmbedUnimplementedEgpServiceServer() {}
 func (UnimplementedEgpServiceServer) testEmbeddedByValue()                    {}
@@ -538,6 +556,24 @@ func _EgpService_RegisterFcmToken_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EgpService_SendVerificationEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SendVerificationEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).SendVerificationEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_SendVerificationEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).SendVerificationEmail(ctx, req.(*SendVerificationEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // EgpService_ServiceDesc is the grpc.ServiceDesc for EgpService service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -596,6 +632,10 @@ var EgpService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "RegisterFcmToken",
 			Handler:    _EgpService_RegisterFcmToken_Handler,
+		},
+		{
+			MethodName: "SendVerificationEmail",
+			Handler:    _EgpService_SendVerificationEmail_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
