@@ -243,6 +243,15 @@ message RegisterFcmTokenResponse {
   bool success = 1;
 }
 
+// メール確認メール送信
+message SendVerificationEmailRequest {
+  string email = 1;            // 送信先メールアドレス
+}
+
+message SendVerificationEmailResponse {
+  bool success = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -270,4 +279,6 @@ service EgpService {
   rpc GetYears (YearsRequest) returns (YearsResponse);
   // FCMトークン登録
   rpc RegisterFcmToken (RegisterFcmTokenRequest) returns (RegisterFcmTokenResponse);
+  // メール確認メール送信
+  rpc SendVerificationEmail (SendVerificationEmailRequest) returns (SendVerificationEmailResponse);
 }
