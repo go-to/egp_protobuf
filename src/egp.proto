@@ -252,6 +252,15 @@ message SendVerificationEmailResponse {
   bool success = 1;
 }
 
+// パスワードリセットメール送信
+message SendPasswordResetEmailRequest {
+  string email = 1;            // 送信先メールアドレス
+}
+
+message SendPasswordResetEmailResponse {
+  bool success = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -281,4 +290,6 @@ service EgpService {
   rpc RegisterFcmToken (RegisterFcmTokenRequest) returns (RegisterFcmTokenResponse);
   // メール確認メール送信
   rpc SendVerificationEmail (SendVerificationEmailRequest) returns (SendVerificationEmailResponse);
+  // パスワードリセットメール送信
+  rpc SendPasswordResetEmail (SendPasswordResetEmailRequest) returns (SendPasswordResetEmailResponse);
 }
