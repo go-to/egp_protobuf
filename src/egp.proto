@@ -252,6 +252,24 @@ message SendVerificationEmailResponse {
   bool success = 1;
 }
 
+// ニックネーム（表示名）更新
+message UpdateDisplayNameRequest {
+  string display_name = 1;     // 新しい表示名
+}
+
+message UpdateDisplayNameResponse {
+  User user = 1;               // 更新後のユーザー情報
+}
+
+// メールアドレス更新
+message UpdateEmailRequest {
+  string new_email = 1;        // 新しいメールアドレス
+}
+
+message UpdateEmailResponse {
+  User user = 1;               // 更新後のユーザー情報
+}
+
 // パスワードリセットメール送信
 message SendPasswordResetEmailRequest {
   string email = 1;            // 送信先メールアドレス
@@ -290,6 +308,10 @@ service EgpService {
   rpc RegisterFcmToken (RegisterFcmTokenRequest) returns (RegisterFcmTokenResponse);
   // メール確認メール送信
   rpc SendVerificationEmail (SendVerificationEmailRequest) returns (SendVerificationEmailResponse);
+  // ニックネーム更新
+  rpc UpdateDisplayName (UpdateDisplayNameRequest) returns (UpdateDisplayNameResponse);
+  // メールアドレス更新
+  rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
   // パスワードリセットメール送信
   rpc SendPasswordResetEmail (SendPasswordResetEmailRequest) returns (SendPasswordResetEmailResponse);
 }

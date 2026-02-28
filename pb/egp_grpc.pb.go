@@ -33,6 +33,8 @@ const (
 	EgpService_GetYears_FullMethodName               = "/egp.EgpService/GetYears"
 	EgpService_RegisterFcmToken_FullMethodName       = "/egp.EgpService/RegisterFcmToken"
 	EgpService_SendVerificationEmail_FullMethodName  = "/egp.EgpService/SendVerificationEmail"
+	EgpService_UpdateDisplayName_FullMethodName      = "/egp.EgpService/UpdateDisplayName"
+	EgpService_UpdateEmail_FullMethodName            = "/egp.EgpService/UpdateEmail"
 	EgpService_SendPasswordResetEmail_FullMethodName = "/egp.EgpService/SendPasswordResetEmail"
 )
 
@@ -68,6 +70,10 @@ type EgpServiceClient interface {
 	RegisterFcmToken(ctx context.Context, in *RegisterFcmTokenRequest, opts ...grpc.CallOption) (*RegisterFcmTokenResponse, error)
 	// メール確認メール送信
 	SendVerificationEmail(ctx context.Context, in *SendVerificationEmailRequest, opts ...grpc.CallOption) (*SendVerificationEmailResponse, error)
+	// ニックネーム更新
+	UpdateDisplayName(ctx context.Context, in *UpdateDisplayNameRequest, opts ...grpc.CallOption) (*UpdateDisplayNameResponse, error)
+	// メールアドレス更新
+	UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error)
 	// パスワードリセットメール送信
 	SendPasswordResetEmail(ctx context.Context, in *SendPasswordResetEmailRequest, opts ...grpc.CallOption) (*SendPasswordResetEmailResponse, error)
 }
@@ -220,6 +226,26 @@ func (c *egpServiceClient) SendVerificationEmail(ctx context.Context, in *SendVe
 	return out, nil
 }
 
+func (c *egpServiceClient) UpdateDisplayName(ctx context.Context, in *UpdateDisplayNameRequest, opts ...grpc.CallOption) (*UpdateDisplayNameResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateDisplayNameResponse)
+	err := c.cc.Invoke(ctx, EgpService_UpdateDisplayName_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *egpServiceClient) UpdateEmail(ctx context.Context, in *UpdateEmailRequest, opts ...grpc.CallOption) (*UpdateEmailResponse, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(UpdateEmailResponse)
+	err := c.cc.Invoke(ctx, EgpService_UpdateEmail_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *egpServiceClient) SendPasswordResetEmail(ctx context.Context, in *SendPasswordResetEmailRequest, opts ...grpc.CallOption) (*SendPasswordResetEmailResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(SendPasswordResetEmailResponse)
@@ -262,6 +288,10 @@ type EgpServiceServer interface {
 	RegisterFcmToken(context.Context, *RegisterFcmTokenRequest) (*RegisterFcmTokenResponse, error)
 	// メール確認メール送信
 	SendVerificationEmail(context.Context, *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error)
+	// ニックネーム更新
+	UpdateDisplayName(context.Context, *UpdateDisplayNameRequest) (*UpdateDisplayNameResponse, error)
+	// メールアドレス更新
+	UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error)
 	// パスワードリセットメール送信
 	SendPasswordResetEmail(context.Context, *SendPasswordResetEmailRequest) (*SendPasswordResetEmailResponse, error)
 	mustEmbedUnimplementedEgpServiceServer()
@@ -315,6 +345,12 @@ func (UnimplementedEgpServiceServer) RegisterFcmToken(context.Context, *Register
 }
 func (UnimplementedEgpServiceServer) SendVerificationEmail(context.Context, *SendVerificationEmailRequest) (*SendVerificationEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendVerificationEmail not implemented")
+}
+func (UnimplementedEgpServiceServer) UpdateDisplayName(context.Context, *UpdateDisplayNameRequest) (*UpdateDisplayNameResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateDisplayName not implemented")
+}
+func (UnimplementedEgpServiceServer) UpdateEmail(context.Context, *UpdateEmailRequest) (*UpdateEmailResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UpdateEmail not implemented")
 }
 func (UnimplementedEgpServiceServer) SendPasswordResetEmail(context.Context, *SendPasswordResetEmailRequest) (*SendPasswordResetEmailResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SendPasswordResetEmail not implemented")
@@ -592,6 +628,42 @@ func _EgpService_SendVerificationEmail_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _EgpService_UpdateDisplayName_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateDisplayNameRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).UpdateDisplayName(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_UpdateDisplayName_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).UpdateDisplayName(ctx, req.(*UpdateDisplayNameRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _EgpService_UpdateEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UpdateEmailRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(EgpServiceServer).UpdateEmail(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: EgpService_UpdateEmail_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(EgpServiceServer).UpdateEmail(ctx, req.(*UpdateEmailRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _EgpService_SendPasswordResetEmail_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SendPasswordResetEmailRequest)
 	if err := dec(in); err != nil {
@@ -672,6 +744,14 @@ var EgpService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SendVerificationEmail",
 			Handler:    _EgpService_SendVerificationEmail_Handler,
+		},
+		{
+			MethodName: "UpdateDisplayName",
+			Handler:    _EgpService_UpdateDisplayName_Handler,
+		},
+		{
+			MethodName: "UpdateEmail",
+			Handler:    _EgpService_UpdateEmail_Handler,
 		},
 		{
 			MethodName: "SendPasswordResetEmail",
