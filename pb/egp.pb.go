@@ -2362,6 +2362,184 @@ func (x *SendVerificationEmailResponse) GetSuccess() bool {
 	return false
 }
 
+// ニックネーム（表示名）更新
+type UpdateDisplayNameRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	DisplayName   string                 `protobuf:"bytes,1,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"` // 新しい表示名
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateDisplayNameRequest) Reset() {
+	*x = UpdateDisplayNameRequest{}
+	mi := &file_egp_proto_msgTypes[36]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDisplayNameRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDisplayNameRequest) ProtoMessage() {}
+
+func (x *UpdateDisplayNameRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[36]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDisplayNameRequest.ProtoReflect.Descriptor instead.
+func (*UpdateDisplayNameRequest) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{36}
+}
+
+func (x *UpdateDisplayNameRequest) GetDisplayName() string {
+	if x != nil {
+		return x.DisplayName
+	}
+	return ""
+}
+
+type UpdateDisplayNameResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // 更新後のユーザー情報
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateDisplayNameResponse) Reset() {
+	*x = UpdateDisplayNameResponse{}
+	mi := &file_egp_proto_msgTypes[37]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateDisplayNameResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateDisplayNameResponse) ProtoMessage() {}
+
+func (x *UpdateDisplayNameResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[37]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateDisplayNameResponse.ProtoReflect.Descriptor instead.
+func (*UpdateDisplayNameResponse) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{37}
+}
+
+func (x *UpdateDisplayNameResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
+// メールアドレス更新
+type UpdateEmailRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	NewEmail      string                 `protobuf:"bytes,1,opt,name=new_email,json=newEmail,proto3" json:"new_email,omitempty"` // 新しいメールアドレス
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateEmailRequest) Reset() {
+	*x = UpdateEmailRequest{}
+	mi := &file_egp_proto_msgTypes[38]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateEmailRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateEmailRequest) ProtoMessage() {}
+
+func (x *UpdateEmailRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[38]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateEmailRequest.ProtoReflect.Descriptor instead.
+func (*UpdateEmailRequest) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{38}
+}
+
+func (x *UpdateEmailRequest) GetNewEmail() string {
+	if x != nil {
+		return x.NewEmail
+	}
+	return ""
+}
+
+type UpdateEmailResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"` // 更新後のユーザー情報
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *UpdateEmailResponse) Reset() {
+	*x = UpdateEmailResponse{}
+	mi := &file_egp_proto_msgTypes[39]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *UpdateEmailResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*UpdateEmailResponse) ProtoMessage() {}
+
+func (x *UpdateEmailResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_egp_proto_msgTypes[39]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use UpdateEmailResponse.ProtoReflect.Descriptor instead.
+func (*UpdateEmailResponse) Descriptor() ([]byte, []int) {
+	return file_egp_proto_rawDescGZIP(), []int{39}
+}
+
+func (x *UpdateEmailResponse) GetUser() *User {
+	if x != nil {
+		return x.User
+	}
+	return nil
+}
+
 // パスワードリセットメール送信
 type SendPasswordResetEmailRequest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
@@ -2372,7 +2550,7 @@ type SendPasswordResetEmailRequest struct {
 
 func (x *SendPasswordResetEmailRequest) Reset() {
 	*x = SendPasswordResetEmailRequest{}
-	mi := &file_egp_proto_msgTypes[36]
+	mi := &file_egp_proto_msgTypes[40]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2384,7 +2562,7 @@ func (x *SendPasswordResetEmailRequest) String() string {
 func (*SendPasswordResetEmailRequest) ProtoMessage() {}
 
 func (x *SendPasswordResetEmailRequest) ProtoReflect() protoreflect.Message {
-	mi := &file_egp_proto_msgTypes[36]
+	mi := &file_egp_proto_msgTypes[40]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2397,7 +2575,7 @@ func (x *SendPasswordResetEmailRequest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendPasswordResetEmailRequest.ProtoReflect.Descriptor instead.
 func (*SendPasswordResetEmailRequest) Descriptor() ([]byte, []int) {
-	return file_egp_proto_rawDescGZIP(), []int{36}
+	return file_egp_proto_rawDescGZIP(), []int{40}
 }
 
 func (x *SendPasswordResetEmailRequest) GetEmail() string {
@@ -2416,7 +2594,7 @@ type SendPasswordResetEmailResponse struct {
 
 func (x *SendPasswordResetEmailResponse) Reset() {
 	*x = SendPasswordResetEmailResponse{}
-	mi := &file_egp_proto_msgTypes[37]
+	mi := &file_egp_proto_msgTypes[41]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -2428,7 +2606,7 @@ func (x *SendPasswordResetEmailResponse) String() string {
 func (*SendPasswordResetEmailResponse) ProtoMessage() {}
 
 func (x *SendPasswordResetEmailResponse) ProtoReflect() protoreflect.Message {
-	mi := &file_egp_proto_msgTypes[37]
+	mi := &file_egp_proto_msgTypes[41]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -2441,7 +2619,7 @@ func (x *SendPasswordResetEmailResponse) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use SendPasswordResetEmailResponse.ProtoReflect.Descriptor instead.
 func (*SendPasswordResetEmailResponse) Descriptor() ([]byte, []int) {
-	return file_egp_proto_rawDescGZIP(), []int{37}
+	return file_egp_proto_rawDescGZIP(), []int{41}
 }
 
 func (x *SendPasswordResetEmailResponse) GetSuccess() bool {
@@ -2616,7 +2794,15 @@ const file_egp_proto_rawDesc = "" +
 	"\x1cSendVerificationEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\"9\n" +
 	"\x1dSendVerificationEmailResponse\x12\x18\n" +
-	"\asuccess\x18\x01 \x01(\bR\asuccess\"5\n" +
+	"\asuccess\x18\x01 \x01(\bR\asuccess\"=\n" +
+	"\x18UpdateDisplayNameRequest\x12!\n" +
+	"\fdisplay_name\x18\x01 \x01(\tR\vdisplayName\":\n" +
+	"\x19UpdateDisplayNameResponse\x12\x1d\n" +
+	"\x04user\x18\x01 \x01(\v2\t.egp.UserR\x04user\"1\n" +
+	"\x12UpdateEmailRequest\x12\x1b\n" +
+	"\tnew_email\x18\x01 \x01(\tR\bnewEmail\"4\n" +
+	"\x13UpdateEmailResponse\x12\x1d\n" +
+	"\x04user\x18\x01 \x01(\v2\t.egp.UserR\x04user\"5\n" +
 	"\x1dSendPasswordResetEmailRequest\x12\x14\n" +
 	"\x05email\x18\x01 \x01(\tR\x05email\":\n" +
 	"\x1eSendPasswordResetEmailResponse\x12\x18\n" +
@@ -2641,7 +2827,7 @@ const file_egp_proto_rawDesc = "" +
 	"\tYearOrder\x12\x13\n" +
 	"\x0fYEAR_ORDER_NONE\x10\x00\x12\x12\n" +
 	"\x0eYEAR_ORDER_ASC\x10\x01\x12\x13\n" +
-	"\x0fYEAR_ORDER_DESC\x10\x022\xde\a\n" +
+	"\x0fYEAR_ORDER_DESC\x10\x022\xf4\b\n" +
 	"\n" +
 	"EgpService\x12@\n" +
 	"\rGetShopsTotal\x12\x16.egp.ShopsTotalRequest\x1a\x17.egp.ShopsTotalResponse\x121\n" +
@@ -2659,7 +2845,9 @@ const file_egp_proto_rawDesc = "" +
 	"\x0eGetDefaultYear\x12\x17.egp.DefaultYearRequest\x1a\x18.egp.DefaultYearResponse\x121\n" +
 	"\bGetYears\x12\x11.egp.YearsRequest\x1a\x12.egp.YearsResponse\x12O\n" +
 	"\x10RegisterFcmToken\x12\x1c.egp.RegisterFcmTokenRequest\x1a\x1d.egp.RegisterFcmTokenResponse\x12^\n" +
-	"\x15SendVerificationEmail\x12!.egp.SendVerificationEmailRequest\x1a\".egp.SendVerificationEmailResponse\x12a\n" +
+	"\x15SendVerificationEmail\x12!.egp.SendVerificationEmailRequest\x1a\".egp.SendVerificationEmailResponse\x12R\n" +
+	"\x11UpdateDisplayName\x12\x1d.egp.UpdateDisplayNameRequest\x1a\x1e.egp.UpdateDisplayNameResponse\x12@\n" +
+	"\vUpdateEmail\x12\x17.egp.UpdateEmailRequest\x1a\x18.egp.UpdateEmailResponse\x12a\n" +
 	"\x16SendPasswordResetEmail\x12\".egp.SendPasswordResetEmailRequest\x1a#.egp.SendPasswordResetEmailResponseB\"Z github.com/go-to/egp_protobuf/pbb\x06proto3"
 
 var (
@@ -2675,7 +2863,7 @@ func file_egp_proto_rawDescGZIP() []byte {
 }
 
 var file_egp_proto_enumTypes = make([]protoimpl.EnumInfo, 4)
-var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 38)
+var file_egp_proto_msgTypes = make([]protoimpl.MessageInfo, 42)
 var file_egp_proto_goTypes = []any{
 	(CategoryType)(0),                      // 0: egp.CategoryType
 	(SearchType)(0),                        // 1: egp.SearchType
@@ -2717,8 +2905,12 @@ var file_egp_proto_goTypes = []any{
 	(*RegisterFcmTokenResponse)(nil),       // 37: egp.RegisterFcmTokenResponse
 	(*SendVerificationEmailRequest)(nil),   // 38: egp.SendVerificationEmailRequest
 	(*SendVerificationEmailResponse)(nil),  // 39: egp.SendVerificationEmailResponse
-	(*SendPasswordResetEmailRequest)(nil),  // 40: egp.SendPasswordResetEmailRequest
-	(*SendPasswordResetEmailResponse)(nil), // 41: egp.SendPasswordResetEmailResponse
+	(*UpdateDisplayNameRequest)(nil),       // 40: egp.UpdateDisplayNameRequest
+	(*UpdateDisplayNameResponse)(nil),      // 41: egp.UpdateDisplayNameResponse
+	(*UpdateEmailRequest)(nil),             // 42: egp.UpdateEmailRequest
+	(*UpdateEmailResponse)(nil),            // 43: egp.UpdateEmailResponse
+	(*SendPasswordResetEmailRequest)(nil),  // 44: egp.SendPasswordResetEmailRequest
+	(*SendPasswordResetEmailResponse)(nil), // 45: egp.SendPasswordResetEmailResponse
 }
 var file_egp_proto_depIdxs = []int32{
 	4,  // 0: egp.Event.start_date:type_name -> egp.Date
@@ -2734,41 +2926,47 @@ var file_egp_proto_depIdxs = []int32{
 	23, // 10: egp.GetUserResponse.user:type_name -> egp.User
 	23, // 11: egp.UpdateUserResponse.user:type_name -> egp.User
 	3,  // 12: egp.YearsRequest.year_order:type_name -> egp.YearOrder
-	13, // 13: egp.EgpService.GetShopsTotal:input_type -> egp.ShopsTotalRequest
-	15, // 14: egp.EgpService.GetShops:input_type -> egp.ShopsRequest
-	17, // 15: egp.EgpService.GetShop:input_type -> egp.ShopRequest
-	19, // 16: egp.EgpService.AddStamp:input_type -> egp.StampRequest
-	19, // 17: egp.EgpService.DeleteStamp:input_type -> egp.StampRequest
-	21, // 18: egp.EgpService.MergeUserStamp:input_type -> egp.MergeUserStampRequest
-	24, // 19: egp.EgpService.SyncUser:input_type -> egp.SyncUserRequest
-	26, // 20: egp.EgpService.GetUser:input_type -> egp.GetUserRequest
-	28, // 21: egp.EgpService.UpdateUser:input_type -> egp.UpdateUserRequest
-	30, // 22: egp.EgpService.DeleteUser:input_type -> egp.DeleteUserRequest
-	32, // 23: egp.EgpService.GetDefaultYear:input_type -> egp.DefaultYearRequest
-	34, // 24: egp.EgpService.GetYears:input_type -> egp.YearsRequest
-	36, // 25: egp.EgpService.RegisterFcmToken:input_type -> egp.RegisterFcmTokenRequest
-	38, // 26: egp.EgpService.SendVerificationEmail:input_type -> egp.SendVerificationEmailRequest
-	40, // 27: egp.EgpService.SendPasswordResetEmail:input_type -> egp.SendPasswordResetEmailRequest
-	14, // 28: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
-	16, // 29: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
-	18, // 30: egp.EgpService.GetShop:output_type -> egp.ShopResponse
-	20, // 31: egp.EgpService.AddStamp:output_type -> egp.StampResponse
-	20, // 32: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
-	22, // 33: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
-	25, // 34: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
-	27, // 35: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
-	29, // 36: egp.EgpService.UpdateUser:output_type -> egp.UpdateUserResponse
-	31, // 37: egp.EgpService.DeleteUser:output_type -> egp.DeleteUserResponse
-	33, // 38: egp.EgpService.GetDefaultYear:output_type -> egp.DefaultYearResponse
-	35, // 39: egp.EgpService.GetYears:output_type -> egp.YearsResponse
-	37, // 40: egp.EgpService.RegisterFcmToken:output_type -> egp.RegisterFcmTokenResponse
-	39, // 41: egp.EgpService.SendVerificationEmail:output_type -> egp.SendVerificationEmailResponse
-	41, // 42: egp.EgpService.SendPasswordResetEmail:output_type -> egp.SendPasswordResetEmailResponse
-	28, // [28:43] is the sub-list for method output_type
-	13, // [13:28] is the sub-list for method input_type
-	13, // [13:13] is the sub-list for extension type_name
-	13, // [13:13] is the sub-list for extension extendee
-	0,  // [0:13] is the sub-list for field type_name
+	23, // 13: egp.UpdateDisplayNameResponse.user:type_name -> egp.User
+	23, // 14: egp.UpdateEmailResponse.user:type_name -> egp.User
+	13, // 15: egp.EgpService.GetShopsTotal:input_type -> egp.ShopsTotalRequest
+	15, // 16: egp.EgpService.GetShops:input_type -> egp.ShopsRequest
+	17, // 17: egp.EgpService.GetShop:input_type -> egp.ShopRequest
+	19, // 18: egp.EgpService.AddStamp:input_type -> egp.StampRequest
+	19, // 19: egp.EgpService.DeleteStamp:input_type -> egp.StampRequest
+	21, // 20: egp.EgpService.MergeUserStamp:input_type -> egp.MergeUserStampRequest
+	24, // 21: egp.EgpService.SyncUser:input_type -> egp.SyncUserRequest
+	26, // 22: egp.EgpService.GetUser:input_type -> egp.GetUserRequest
+	28, // 23: egp.EgpService.UpdateUser:input_type -> egp.UpdateUserRequest
+	30, // 24: egp.EgpService.DeleteUser:input_type -> egp.DeleteUserRequest
+	32, // 25: egp.EgpService.GetDefaultYear:input_type -> egp.DefaultYearRequest
+	34, // 26: egp.EgpService.GetYears:input_type -> egp.YearsRequest
+	36, // 27: egp.EgpService.RegisterFcmToken:input_type -> egp.RegisterFcmTokenRequest
+	38, // 28: egp.EgpService.SendVerificationEmail:input_type -> egp.SendVerificationEmailRequest
+	40, // 29: egp.EgpService.UpdateDisplayName:input_type -> egp.UpdateDisplayNameRequest
+	42, // 30: egp.EgpService.UpdateEmail:input_type -> egp.UpdateEmailRequest
+	44, // 31: egp.EgpService.SendPasswordResetEmail:input_type -> egp.SendPasswordResetEmailRequest
+	14, // 32: egp.EgpService.GetShopsTotal:output_type -> egp.ShopsTotalResponse
+	16, // 33: egp.EgpService.GetShops:output_type -> egp.ShopsResponse
+	18, // 34: egp.EgpService.GetShop:output_type -> egp.ShopResponse
+	20, // 35: egp.EgpService.AddStamp:output_type -> egp.StampResponse
+	20, // 36: egp.EgpService.DeleteStamp:output_type -> egp.StampResponse
+	22, // 37: egp.EgpService.MergeUserStamp:output_type -> egp.MergeUserStampResponse
+	25, // 38: egp.EgpService.SyncUser:output_type -> egp.SyncUserResponse
+	27, // 39: egp.EgpService.GetUser:output_type -> egp.GetUserResponse
+	29, // 40: egp.EgpService.UpdateUser:output_type -> egp.UpdateUserResponse
+	31, // 41: egp.EgpService.DeleteUser:output_type -> egp.DeleteUserResponse
+	33, // 42: egp.EgpService.GetDefaultYear:output_type -> egp.DefaultYearResponse
+	35, // 43: egp.EgpService.GetYears:output_type -> egp.YearsResponse
+	37, // 44: egp.EgpService.RegisterFcmToken:output_type -> egp.RegisterFcmTokenResponse
+	39, // 45: egp.EgpService.SendVerificationEmail:output_type -> egp.SendVerificationEmailResponse
+	41, // 46: egp.EgpService.UpdateDisplayName:output_type -> egp.UpdateDisplayNameResponse
+	43, // 47: egp.EgpService.UpdateEmail:output_type -> egp.UpdateEmailResponse
+	45, // 48: egp.EgpService.SendPasswordResetEmail:output_type -> egp.SendPasswordResetEmailResponse
+	32, // [32:49] is the sub-list for method output_type
+	15, // [15:32] is the sub-list for method input_type
+	15, // [15:15] is the sub-list for extension type_name
+	15, // [15:15] is the sub-list for extension extendee
+	0,  // [0:15] is the sub-list for field type_name
 }
 
 func init() { file_egp_proto_init() }
@@ -2783,7 +2981,7 @@ func file_egp_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_egp_proto_rawDesc), len(file_egp_proto_rawDesc)),
 			NumEnums:      4,
-			NumMessages:   38,
+			NumMessages:   42,
 			NumExtensions: 0,
 			NumServices:   1,
 		},
