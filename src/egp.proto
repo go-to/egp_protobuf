@@ -261,13 +261,13 @@ message UpdateDisplayNameResponse {
   User user = 1;               // 更新後のユーザー情報
 }
 
-// メールアドレス更新
-message UpdateEmailRequest {
+// メールアドレス変更リクエスト（確認メール送信）
+message RequestEmailChangeRequest {
   string new_email = 1;        // 新しいメールアドレス
 }
 
-message UpdateEmailResponse {
-  User user = 1;               // 更新後のユーザー情報
+message RequestEmailChangeResponse {
+  bool success = 1;
 }
 
 // パスワードリセットメール送信
@@ -310,8 +310,8 @@ service EgpService {
   rpc SendVerificationEmail (SendVerificationEmailRequest) returns (SendVerificationEmailResponse);
   // ニックネーム更新
   rpc UpdateDisplayName (UpdateDisplayNameRequest) returns (UpdateDisplayNameResponse);
-  // メールアドレス更新
-  rpc UpdateEmail (UpdateEmailRequest) returns (UpdateEmailResponse);
+  // メールアドレス変更リクエスト（確認メール送信）
+  rpc RequestEmailChange (RequestEmailChangeRequest) returns (RequestEmailChangeResponse);
   // パスワードリセットメール送信
   rpc SendPasswordResetEmail (SendPasswordResetEmailRequest) returns (SendPasswordResetEmailResponse);
 }
