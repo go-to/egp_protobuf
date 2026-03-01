@@ -180,6 +180,7 @@ message User {
   string display_name = 3;      // 表示名
   bool is_anonymous = 4;        // 匿名ユーザーフラグ
   string provider_id = 5;       // 認証プロバイダー（anonymous, google.com, password等）
+  bool email_verified = 6;      // メール確認済みフラグ
 }
 
 message SyncUserRequest {
