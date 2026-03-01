@@ -1588,11 +1588,12 @@ func (x *MergeUserStampResponse) GetStampNum() int64 {
 // ユーザー関連メッセージ
 type User struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`                 // Firebase UID
-	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`                                 // メールアドレス（任意）
-	DisplayName   string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`  // 表示名
-	IsAnonymous   bool                   `protobuf:"varint,4,opt,name=is_anonymous,json=isAnonymous,proto3" json:"is_anonymous,omitempty"` // 匿名ユーザーフラグ
-	ProviderId    string                 `protobuf:"bytes,5,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`     // 認証プロバイダー（anonymous, google.com, password等）
+	UserId        string                 `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id,omitempty"`                       // Firebase UID
+	Email         string                 `protobuf:"bytes,2,opt,name=email,proto3" json:"email,omitempty"`                                       // メールアドレス（任意）
+	DisplayName   string                 `protobuf:"bytes,3,opt,name=display_name,json=displayName,proto3" json:"display_name,omitempty"`        // 表示名
+	IsAnonymous   bool                   `protobuf:"varint,4,opt,name=is_anonymous,json=isAnonymous,proto3" json:"is_anonymous,omitempty"`       // 匿名ユーザーフラグ
+	ProviderId    string                 `protobuf:"bytes,5,opt,name=provider_id,json=providerId,proto3" json:"provider_id,omitempty"`           // 認証プロバイダー（anonymous, google.com, password等）
+	EmailVerified bool                   `protobuf:"varint,6,opt,name=email_verified,json=emailVerified,proto3" json:"email_verified,omitempty"` // メール確認済みフラグ
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -1660,6 +1661,13 @@ func (x *User) GetProviderId() string {
 		return x.ProviderId
 	}
 	return ""
+}
+
+func (x *User) GetEmailVerified() bool {
+	if x != nil {
+		return x.EmailVerified
+	}
+	return false
 }
 
 type SyncUserRequest struct {
@@ -2752,14 +2760,15 @@ const file_egp_proto_rawDesc = "" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12*\n" +
 	"\x11anonymous_user_id\x18\x02 \x01(\tR\x0fanonymousUserId\"5\n" +
 	"\x16MergeUserStampResponse\x12\x1b\n" +
-	"\tstamp_num\x18\x01 \x01(\x03R\bstampNum\"\x9c\x01\n" +
+	"\tstamp_num\x18\x01 \x01(\x03R\bstampNum\"\xc3\x01\n" +
 	"\x04User\x12\x17\n" +
 	"\auser_id\x18\x01 \x01(\tR\x06userId\x12\x14\n" +
 	"\x05email\x18\x02 \x01(\tR\x05email\x12!\n" +
 	"\fdisplay_name\x18\x03 \x01(\tR\vdisplayName\x12!\n" +
 	"\fis_anonymous\x18\x04 \x01(\bR\visAnonymous\x12\x1f\n" +
 	"\vprovider_id\x18\x05 \x01(\tR\n" +
-	"providerId\"4\n" +
+	"providerId\x12%\n" +
+	"\x0eemail_verified\x18\x06 \x01(\bR\remailVerified\"4\n" +
 	"\x0fSyncUserRequest\x12!\n" +
 	"\fdisplay_name\x18\x01 \x01(\tR\vdisplayName\"Q\n" +
 	"\x10SyncUserResponse\x12\x1d\n" +
