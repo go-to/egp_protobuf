@@ -280,6 +280,16 @@ message SendPasswordResetEmailResponse {
   bool success = 1;
 }
 
+// スタンプQRコード用URL生成
+message GenerateStampQrUrlRequest {
+  int64 year = 1;
+  int64 no = 2;
+}
+
+message GenerateStampQrUrlResponse {
+  string url = 1;
+}
+
 service EgpService {
   // 店舗総数取得
   rpc GetShopsTotal (ShopsTotalRequest) returns (ShopsTotalResponse);
@@ -315,4 +325,6 @@ service EgpService {
   rpc RequestEmailChange (RequestEmailChangeRequest) returns (RequestEmailChangeResponse);
   // パスワードリセットメール送信
   rpc SendPasswordResetEmail (SendPasswordResetEmailRequest) returns (SendPasswordResetEmailResponse);
+  // スタンプQRコード用URL生成
+  rpc GenerateStampQrUrl (GenerateStampQrUrlRequest) returns (GenerateStampQrUrlResponse);
 }
